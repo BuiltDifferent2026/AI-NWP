@@ -274,9 +274,6 @@ export const PageForecastExplorer: React.FC = () => {
       {/* 1. Header & Title with Navigation Actions */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.25rem', flexWrap: 'wrap', gap: '0.75rem' }}>
         <div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginBottom: '0.2rem' }}>
-            Home &gt; Forecast &amp; Blending Studio
-          </div>
           <h1 style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--color-primary)' }}>
             Forecast &amp; Adaptive Blending Studio
           </h1>

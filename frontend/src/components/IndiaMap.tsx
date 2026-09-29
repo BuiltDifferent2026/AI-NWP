@@ -5,8 +5,7 @@ import { MODEL_MAP } from '../data/models';
 import { WEATHER_REGIMES } from '../data/regimes';
 import { useForecast } from '../context/ForecastContext';
 import { ArrowRight, AlertTriangle, Layers, Info, MapPin, Eye } from 'lucide-react';
-
-const MAPBOX_TOKEN = 'pk.eyJ1IjoiYW51c2hrYW1hbGkyMDA1IiwiYSI6ImNtdWpsanoxYTFpdGoyd3BnMGZ4aDhtbjUifQ.6IjaULfuCqS1vAIcXdDs6A';
+const MAPBOX_TOKEN = import.meta.env.VITE_MAPBOX_TOKEN || '';
 
 export interface IndiaMapProps {
   activeMapMode?: 'blend' | 'weights' | 'agreement' | 'confidence' | 'weight';
@@ -243,6 +242,11 @@ export const IndiaMap: React.FC<IndiaMapProps> = ({
         mapboxInstanceRef.current.remove();
         mapboxInstanceRef.current = null;
       }
+      return;
+    }
+
+    if (!MAPBOX_TOKEN) {
+      console.warn('Mapbox token is missing. Please define VITE_MAPBOX_TOKEN in your .env file.');
       return;
     }
 

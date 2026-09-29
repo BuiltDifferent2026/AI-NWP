@@ -262,9 +262,6 @@ export const PageScorecard: React.FC = () => {
     <div className="scorecard-page" style={{ paddingBottom: '2.5rem' }}>
       {/* 1. Page Header & Explainer */}
       <div style={{ marginBottom: '1.5rem' }}>
-        <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginBottom: '0.25rem' }}>
-          Home &gt; Skill Scorecard &amp; Verification Matrix
-        </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.35rem', letterSpacing: '-0.01em' }}>

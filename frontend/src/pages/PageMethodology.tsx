@@ -33,9 +33,6 @@ export const PageMethodology: React.FC = () => {
     <div className="methodology-page">
       {/* Title & Core Positioning */}
       <div style={{ marginBottom: '1.75rem' }}>
-        <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginBottom: '0.2rem' }}>
-          Home &gt; Methodology &amp; Scientific Framework
-        </div>
         <h1 style={{ fontSize: '1.75rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: '0.4rem' }}>
           System Methodology &amp; Scientific Architecture
         </h1>

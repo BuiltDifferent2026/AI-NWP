@@ -17,9 +17,6 @@ export const PageDataProducts: React.FC = () => {
       {/* 1. Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.25rem' }}>
         <div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginBottom: '0.2rem' }}>
-            Home &gt; Data &amp; Products
-          </div>
           <h1 style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--color-primary)' }}>
             Data Ecosystem &amp; Products Catalog
           </h1>

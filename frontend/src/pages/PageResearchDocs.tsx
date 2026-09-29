@@ -31,9 +31,6 @@ export const PageResearchDocs: React.FC = () => {
       {/* 1. Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.25rem' }}>
         <div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginBottom: '0.2rem' }}>
-            Home &gt; Research &amp; Documentation
-          </div>
           <h1 style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--color-primary)' }}>
             Research, Evidence &amp; Scientific Documentation
           </h1>

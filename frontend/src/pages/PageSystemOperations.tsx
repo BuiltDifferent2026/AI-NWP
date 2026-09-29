@@ -46,9 +46,6 @@ export const PageSystemOperations: React.FC = () => {
       {/* Header */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.25rem' }}>
         <div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginBottom: '0.2rem' }}>
-            Operations &gt; System Status
-          </div>
           <h1 style={{ fontSize: '1.6rem', fontWeight: 700, color: 'var(--color-primary)' }}>
             Operational Pipeline & Infrastructure Architecture
           </h1>
