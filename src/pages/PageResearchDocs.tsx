@@ -172,7 +172,7 @@ export const PageResearchDocs: React.FC = () => {
           </div>
         </div>
 
-        <div className="col-span-3 card-standard" style={{ cursor: 'pointer' }} onClick={() => navigateTo('model-blending')}>
+        <div className="col-span-3 card-standard" style={{ cursor: 'pointer' }} onClick={() => navigateTo('forecast-explorer')}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.4rem' }}>
             <BookOpen size={16} color="#D97706" />
             <span style={{ fontWeight: 700, fontSize: '0.85rem' }}>Forecaster User Guide</span>

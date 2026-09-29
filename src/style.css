@@ -119,20 +119,55 @@ p {
   min-height: calc(100vh - 65px);
 }
 
-/* Sidebar Navigation - Dark Forest Green Theme */
+/* Sidebar Navigation - Dense Forest Background + Dark Forest Green Theme */
 .sidebar-nav {
   width: 240px;
-  background: linear-gradient(180deg, #0B3D2E 0%, #064E3B 55%, #022C22 100%);
+  position: relative;
+  background-color: #041F16;
   border-right: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex-shrink: 0;
   z-index: 30;
-  box-shadow: 2px 0 12px rgba(2, 44, 34, 0.25);
+  box-shadow: 2px 0 16px rgba(2, 44, 34, 0.35);
+  overflow: hidden;
+}
+
+/* Full-height Dense Forest Background Layer */
+.sidebar-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/sidebar-forest.png');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+  filter: brightness(0.95) contrast(1.15) saturate(1.10);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Dark Green Translucent Gradient Overlay for Navigation Contrast */
+.sidebar-nav::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 44, 32, 0.84) 0%,
+    rgba(4, 34, 24, 0.65) 38%,
+    rgba(2, 26, 18, 0.55) 68%,
+    rgba(2, 18, 12, 0.86) 100%
+  );
+  z-index: 2;
+  pointer-events: none;
 }
 
 .sidebar-menu {
+  position: relative;
+  z-index: 5;
   padding: 1rem 0.75rem;
   display: flex;
   flex-direction: column;
@@ -147,23 +182,26 @@ p {
   border-radius: var(--radius-sm);
   border: none;
   background: transparent;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.94);
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s ease;
   text-align: left;
   width: 100%;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
 }
 
 .sidebar-link-btn svg {
-  color: rgba(255, 255, 255, 0.88);
-  stroke: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.90);
+  stroke: rgba(255, 255, 255, 0.90);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.6));
 }
 
 .sidebar-link-btn:hover {
-  background: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.16);
   color: #FFFFFF;
+  backdrop-filter: blur(4px);
 }
 
 .sidebar-link-btn:hover svg {
@@ -176,18 +214,23 @@ p {
   color: #064E3B !important;
   font-weight: 700;
   border-left: 4px solid #10B981;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32);
+  text-shadow: none;
 }
 
 .sidebar-link-btn.active svg {
   color: #064E3B !important;
   stroke: #064E3B !important;
+  filter: none;
 }
 
 .sidebar-footer {
+  position: relative;
+  z-index: 5;
   padding: 1rem 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(0, 0, 0, 0.22);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(2, 20, 14, 0.65);
+  backdrop-filter: blur(8px);
   color: #FFFFFF;
 }
 
@@ -245,56 +288,126 @@ p {
   width: 100%;
 }
 
-/* Hero Banner matching Reference Image 1 & 8 */
+/* Hero Banner with Realistic Satellite Weather Imagery */
 .home-hero-banner {
-  background: linear-gradient(135deg, #07192C 0%, #0B3D62 50%, #0F2E4A 100%);
+  background: #040D1A;
   border-radius: var(--radius-md);
   padding: 2.25rem 2.5rem;
   color: #FFFFFF;
   position: relative;
   overflow: hidden;
   margin-bottom: 1.5rem;
-  box-shadow: var(--shadow-card);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.hero-satellite-bg {
+/* Satellite Image with Slow Ken Burns / Zoom Animation */
+.hero-bg-satellite {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 55%;
+  top: -4%;
+  left: -4%;
+  width: 108%;
+  height: 108%;
+  background-image: url('/satellite-hero.png');
   background-size: cover;
-  background-position: center right;
-  opacity: 0.35;
+  background-position: 46% 38%;
+  background-repeat: no-repeat;
+  filter: brightness(1.12) contrast(1.18) saturate(1.22);
+  animation: kenBurnsSatellite 32s ease-in-out infinite alternate;
   pointer-events: none;
+  z-index: 1;
+  transform-origin: 46% 38%;
+  will-change: transform;
+}
+
+/* Atmospheric Radar Subtle Shimmer */
+.hero-bg-shimmer {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 52% 40%, rgba(56, 189, 248, 0.10) 0%, transparent 60%);
+  animation: weatherAtmospherePulse 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 2;
   mix-blend-mode: screen;
 }
 
+/* Targeted Dark Gradient Overlay - Soft focus on far-left text, maximum visibility on map, clouds, and cyclone */
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(
+      90deg, 
+      rgba(3, 10, 20, 0.86) 0%, 
+      rgba(3, 10, 20, 0.60) 28%, 
+      rgba(4, 14, 28, 0.16) 48%, 
+      rgba(4, 14, 28, 0.04) 70%, 
+      rgba(3, 10, 20, 0.35) 100%
+    ),
+    linear-gradient(
+      180deg, 
+      rgba(3, 10, 20, 0.30) 0%, 
+      transparent 35%, 
+      rgba(3, 10, 20, 0.55) 100%
+    );
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes kenBurnsSatellite {
+  0% {
+    transform: scale(1.0) translate(0%, 0%);
+  }
+  50% {
+    transform: scale(1.04) translate(-0.8%, -0.5%);
+  }
+  100% {
+    transform: scale(1.02) translate(0.6%, 0.4%);
+  }
+}
+
+@keyframes weatherAtmospherePulse {
+  0% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0.35;
+  }
+}
+
 .hero-feature-pills {
+  position: relative;
+  z-index: 5;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  margin-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  gap: 1.5rem;
+  margin-top: 2.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
   padding-top: 1.25rem;
 }
 
 .hero-feature-pill {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .hero-feature-icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(30, 58, 138, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #60A5FA;
   flex-shrink: 0;
+  border: 1px solid rgba(96, 165, 250, 0.25);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 /* Metric / Stat Card */
@@ -348,6 +461,108 @@ p {
 .btn-hero-outline:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: #FFFFFF;
+}
+
+/* Pill Buttons & Filter Chips */
+.pill-btn {
+  background: #FFFFFF;
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.pill-btn:hover {
+  background: var(--color-surface-hover);
+  border-color: #CBD5E1;
+  color: var(--color-primary);
+}
+
+.pill-btn.active {
+  background: #2563EB;
+  color: #FFFFFF !important;
+  border-color: #1D4ED8;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3);
+}
+
+.pill-btn.active svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+/* Filter Strip Components */
+.filter-strip {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.65rem 1.5rem;
+}
+
+.filter-strip-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.filter-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  white-space: nowrap;
+}
+
+.pill-button-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #F1F5F9;
+  padding: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.pill-button-group .pill-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-muted);
+  padding: 0.3rem 0.65rem;
+  font-size: 0.75rem;
+}
+
+.pill-button-group .pill-btn:hover {
+  color: var(--color-ink);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.pill-button-group .pill-btn.active {
+  background: #FFFFFF;
+  color: var(--color-primary) !important;
+  border-color: #CBD5E1;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.pill-button-group .pill-btn.active svg {
+  color: var(--color-primary) !important;
+  stroke: var(--color-primary) !important;
 }
 
 /* Card standard */

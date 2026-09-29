@@ -469,7 +469,7 @@ function generateMockStates(
       const key = `${lt}_${v}`;
       const ltFactor = lt === 'day-1' ? 1.0 : lt === 'day-3' ? 1.25 : lt === 'day-5' ? 1.6 : 2.0;
       
-      const isFallback = (forceFallbackDay3 && lt === 'day-3') || (options?.forceFallbackOnDay5 && lt === 'day-5');
+      const isFallback = Boolean((forceFallbackDay3 && lt === 'day-3') || (options?.forceFallbackOnDay5 && lt === 'day-5'));
       
       const skillGain = isFallback 
         ? -2.8 

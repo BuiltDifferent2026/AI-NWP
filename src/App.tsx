@@ -23,10 +23,9 @@ export const App: React.FC = () => {
       case 'home':
         return <PageHomeHero />;
       case 'forecast-explorer':
+      case 'model-blending':
       case 'dashboard':
         return <PageForecastExplorer />;
-      case 'model-blending':
-        return <PageModelBlending />;
       case 'explainability':
       case 'region-detail':
         return <PageRegionDetail />;

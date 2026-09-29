@@ -3,22 +3,14 @@ import { useForecast } from '../context/ForecastContext';
 import { 
   Database, 
   Layers, 
-  Code, 
   Download, 
   ExternalLink, 
   CheckCircle2, 
-  Copy,
-  Terminal,
   FileText
 } from 'lucide-react';
 
 export const PageDataProducts: React.FC = () => {
   const { navigateTo } = useForecast();
-
-  const handleCopyApi = () => {
-    navigator.clipboard?.writeText('https://api.ncmrwf.gov.in/hybrid-blend/v1/forecast?subdivision=KNG&lead=72h');
-    alert('API Endpoint copied to clipboard!');
-  };
 
   return (
     <div className="data-products-view">
@@ -32,7 +24,7 @@ export const PageDataProducts: React.FC = () => {
             Data Ecosystem &amp; Products Catalog
           </h1>
           <p style={{ fontSize: '0.825rem', color: 'var(--color-muted)' }}>
-            Integrated multi-source data architecture, NetCDF4/Zarr distribution pipelines, and OpenAPI endpoints for MoES/IMD integration.
+            Integrated multi-source data architecture, NetCDF4/Zarr distribution pipelines, and calibrated forecast products for MoES/IMD.
           </p>
         </div>
 
@@ -98,17 +90,16 @@ export const PageDataProducts: React.FC = () => {
             <div style={{ fontWeight: 700, color: '#15803D', marginBottom: '4px' }}>5. Dissemination</div>
             <div style={{ color: '#166534', fontSize: '0.7rem' }}>
               &bull; Deterministic &amp; Prob Grids<br/>
-              &bull; REST API Endpoints<br/>
+              &bull; NetCDF4 / Zarr Distribution<br/>
               &bull; IMD Duty Dashboard
             </div>
           </div>
         </div>
       </div>
 
-      {/* 3. Middle Row: Ingested Sources Table (Col 7) + API Access (Col 5) */}
+      {/* 3. Ingestion Data Feeds Table */}
       <div className="grid-12" style={{ marginBottom: '1.5rem' }}>
-        {/* Available Data Sources */}
-        <div className="col-span-7 card-standard">
+        <div className="col-span-12 card-standard">
           <span style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--color-ink)', display: 'block', marginBottom: '0.75rem' }}>
             Available Ingestion Data Feeds
           </span>
@@ -151,60 +142,6 @@ export const PageDataProducts: React.FC = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-        </div>
-
-        {/* API Access Card */}
-        <div className="col-span-5 card-standard" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
-              <span style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--color-ink)' }}>
-                Internal REST API Access
-              </span>
-              <span style={{ fontSize: '0.68rem', background: '#F1F5F9', color: 'var(--color-primary)', padding: '0.15rem 0.45rem', borderRadius: '4px', fontWeight: 600 }}>
-                OpenAPI 3.1
-              </span>
-            </div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)', marginBottom: '0.75rem' }}>
-              Standardized JSON &amp; NetCDF stream endpoints for MoES decision support systems.
-            </div>
-
-            {/* URL Display */}
-            <div style={{ background: '#0F172A', color: '#38BDF8', borderRadius: '4px', padding: '0.6rem 0.75rem', fontSize: '0.75rem', fontFamily: 'monospace', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
-              <span>https://api.ncmrwf.gov.in/hybrid-blend/v1</span>
-              <button
-                type="button"
-                onClick={handleCopyApi}
-                style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer' }}
-                title="Copy URL"
-              >
-                <Copy size={13} />
-              </button>
-            </div>
-
-            {/* Endpoints list */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', fontSize: '0.75rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#F8FAFC', padding: '0.35rem 0.5rem', borderRadius: '4px', border: '1px solid var(--color-border-subtle)' }}>
-                <code><strong style={{ color: '#059669' }}>GET</strong> /forecast</code>
-                <span style={{ color: 'var(--color-muted)', fontSize: '0.7rem' }}>Get blended forecast grids</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#F8FAFC', padding: '0.35rem 0.5rem', borderRadius: '4px', border: '1px solid var(--color-border-subtle)' }}>
-                <code><strong style={{ color: '#059669' }}>GET</strong> /weights</code>
-                <span style={{ color: 'var(--color-muted)', fontSize: '0.7rem' }}>Get model gating weight maps</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#F8FAFC', padding: '0.35rem 0.5rem', borderRadius: '4px', border: '1px solid var(--color-border-subtle)' }}>
-                <code><strong style={{ color: '#059669' }}>GET</strong> /extremes</code>
-                <span style={{ color: 'var(--color-muted)', fontSize: '0.7rem' }}>Get Brier exceedance alerts</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#F8FAFC', padding: '0.35rem 0.5rem', borderRadius: '4px', border: '1px solid var(--color-border-subtle)' }}>
-                <code><strong style={{ color: '#059669' }}>GET</strong> /verification</code>
-                <span style={{ color: 'var(--color-muted)', fontSize: '0.7rem' }}>Get CRPS/RMSE performance</span>
-              </div>
-            </div>
-          </div>
-
-          <div style={{ marginTop: '1rem', borderTop: '1px solid var(--color-border-subtle)', paddingTop: '0.6rem', fontSize: '0.72rem', color: 'var(--color-muted)' }}>
-            Authentication: API Key header <code>X-NCMRWF-AUTH</code> (Authorized MoES / IMD nodes).
           </div>
         </div>
       </div>

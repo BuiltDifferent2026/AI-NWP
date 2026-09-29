@@ -19,8 +19,7 @@ export const Sidebar: React.FC = () => {
 
   const menuItems: { id: ActivePage; label: string; icon: React.ReactNode }[] = [
     { id: 'home', label: 'Home', icon: <Home size={17} /> },
-    { id: 'forecast-explorer', label: 'Forecast Explorer', icon: <CloudSun size={17} /> },
-    { id: 'model-blending', label: 'Model Blending', icon: <GitMerge size={17} /> },
+    { id: 'forecast-explorer', label: 'Forecast & Blending', icon: <CloudSun size={17} /> },
     { id: 'extreme-weather', label: 'Extreme Weather', icon: <AlertTriangle size={17} /> },
     { id: 'verification-lab', label: 'Verification Lab', icon: <BarChart3 size={17} /> },
     { id: 'explainability', label: 'Why This Forecast?', icon: <HelpCircle size={17} /> },
@@ -37,8 +36,9 @@ export const Sidebar: React.FC = () => {
           const isActive = 
             activePage === item.id ||
             (activePage === 'dashboard' && item.id === 'forecast-explorer') ||
+            (activePage === 'model-blending' && item.id === 'forecast-explorer') ||
             (activePage === 'region-detail' && item.id === 'explainability') ||
-            (activePage === 'model-duel' && item.id === 'model-blending') ||
+            (activePage === 'model-duel' && item.id === 'forecast-explorer') ||
             (activePage === 'scorecard' && item.id === 'verification-lab') ||
             (activePage === 'extreme-events' && item.id === 'extreme-weather') ||
             (activePage === 'methodology' && item.id === 'about');

@@ -18,17 +18,27 @@ import {
 } from 'lucide-react';
 
 export const PageHomeHero: React.FC = () => {
-  const { navigateTo, setVariable, setLeadTime } = useForecast();
+  const { variable, navigateTo, setVariable, setLeadTime } = useForecast();
 
   return (
     <div className="home-overview-view">
       {/* 1. Hero Banner with Satellite Cloud backdrop and live forecast overlay */}
       <div className="home-hero-banner">
-        <div className="grid-12" style={{ position: 'relative', zIndex: 2, alignItems: 'center' }}>
+        {/* Animated Realistic Satellite Weather Background Layer */}
+        <div className="hero-bg-satellite" aria-hidden="true" />
+        {/* Atmospheric Radar Shimmer Layer */}
+        <div className="hero-bg-shimmer" aria-hidden="true" />
+        {/* Dark Navy/Black Gradient Overlay for Text Readability */}
+        <div className="hero-gradient-overlay" aria-hidden="true" />
+
+        <div className="grid-12" style={{ position: 'relative', zIndex: 5, alignItems: 'center' }}>
           {/* Left Hero Text */}
           <div className="col-span-7">
-            <div style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', color: '#93C5FD', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-              Hybrid AI – NWP Multi-Model Forecast Blending System
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.6rem' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', color: '#93C5FD', textTransform: 'uppercase' }}>
+                Hybrid AI – NWP Multi-Model Forecast Blending System
+              </span>
+              <span style={{ height: '2px', width: '36px', background: 'linear-gradient(90deg, #60A5FA, transparent)', borderRadius: '2px' }} />
             </div>
             <h1 className="hero-headline" style={{ marginBottom: '1rem' }}>
               Smarter Forecasts for a <span style={{ color: '#60A5FA' }}>Safer India</span>
@@ -57,7 +67,7 @@ export const PageHomeHero: React.FC = () => {
           </div>
 
           {/* Right Hero Mini Map Widget */}
-          <div className="col-span-5" style={{ background: 'rgba(7, 25, 44, 0.85)', borderRadius: 'var(--radius-md)', padding: '1rem 1.25rem', border: '1px solid rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(8px)' }}>
+          <div className="col-span-5" style={{ background: 'rgba(7, 25, 44, 0.85)', borderRadius: 'var(--radius-md)', padding: '1rem 1.25rem', border: '1px solid rgba(255, 255, 255, 0.18)', backdropFilter: 'blur(10px)', WebkitBackdropFilter: 'blur(10px)', boxShadow: '0 8px 32px rgba(0,0,0,0.36)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
               <span style={{ fontSize: '0.75rem', color: 'rgba(255, 255, 255, 0.75)' }}>26 Sep 2026, 12 UTC</span>
               <span style={{ fontSize: '0.7rem', background: '#166534', color: '#86EFAC', padding: '0.15rem 0.45rem', borderRadius: '4px', fontWeight: 600 }}>
@@ -66,30 +76,75 @@ export const PageHomeHero: React.FC = () => {
             </div>
 
             {/* Variable Pills in widget */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.35rem', marginBottom: '0.75rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.45rem', marginBottom: '0.75rem' }}>
               <button
                 type="button"
-                className="pill-btn active"
-                style={{ fontSize: '0.72rem', padding: '0.3rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.25rem' }}
+                style={{
+                  fontSize: '0.75rem',
+                  padding: '0.4rem 0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.35rem',
+                  borderRadius: 'var(--radius-sm)',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                  background: variable === 'rainfall' ? '#2563EB' : 'rgba(255, 255, 255, 0.14)',
+                  color: variable === 'rainfall' ? '#FFFFFF' : '#F1F5F9',
+                  border: variable === 'rainfall' ? '1px solid #3B82F6' : '1px solid rgba(255, 255, 255, 0.28)',
+                  fontWeight: variable === 'rainfall' ? 700 : 500,
+                  boxShadow: variable === 'rainfall' ? '0 2px 8px rgba(37, 99, 235, 0.4)' : 'none'
+                }}
                 onClick={() => { setVariable('rainfall'); navigateTo('forecast-explorer'); }}
               >
-                <CloudRain size={12} /> Rainfall
+                <CloudRain size={13} color={variable === 'rainfall' ? '#FFFFFF' : '#93C5FD'} />
+                <span>Rainfall</span>
               </button>
               <button
                 type="button"
-                className="pill-btn"
-                style={{ fontSize: '0.72rem', padding: '0.3rem', color: 'rgba(255, 255, 255, 0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.25rem' }}
+                style={{
+                  fontSize: '0.75rem',
+                  padding: '0.4rem 0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.35rem',
+                  borderRadius: 'var(--radius-sm)',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                  background: variable === 'temperature' ? '#2563EB' : 'rgba(255, 255, 255, 0.14)',
+                  color: variable === 'temperature' ? '#FFFFFF' : '#F1F5F9',
+                  border: variable === 'temperature' ? '1px solid #3B82F6' : '1px solid rgba(255, 255, 255, 0.28)',
+                  fontWeight: variable === 'temperature' ? 700 : 500,
+                  boxShadow: variable === 'temperature' ? '0 2px 8px rgba(37, 99, 235, 0.4)' : 'none'
+                }}
                 onClick={() => { setVariable('temperature'); navigateTo('forecast-explorer'); }}
               >
-                <Thermometer size={12} /> Temperature
+                <Thermometer size={13} color={variable === 'temperature' ? '#FFFFFF' : '#FCA5A5'} />
+                <span>Temperature</span>
               </button>
               <button
                 type="button"
-                className="pill-btn"
-                style={{ fontSize: '0.72rem', padding: '0.3rem', color: 'rgba(255, 255, 255, 0.7)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.25rem' }}
+                style={{
+                  fontSize: '0.75rem',
+                  padding: '0.4rem 0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.35rem',
+                  borderRadius: 'var(--radius-sm)',
+                  cursor: 'pointer',
+                  transition: 'all 0.15s ease',
+                  background: variable === 'wind' ? '#2563EB' : 'rgba(255, 255, 255, 0.14)',
+                  color: variable === 'wind' ? '#FFFFFF' : '#F1F5F9',
+                  border: variable === 'wind' ? '1px solid #3B82F6' : '1px solid rgba(255, 255, 255, 0.28)',
+                  fontWeight: variable === 'wind' ? 700 : 500,
+                  boxShadow: variable === 'wind' ? '0 2px 8px rgba(37, 99, 235, 0.4)' : 'none'
+                }}
                 onClick={() => { setVariable('wind'); navigateTo('forecast-explorer'); }}
               >
-                <Wind size={12} /> Wind
+                <Wind size={13} color={variable === 'wind' ? '#FFFFFF' : '#A7F3D0'} />
+                <span>Wind</span>
               </button>
             </div>
 
