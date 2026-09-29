@@ -28,7 +28,7 @@ export const Sidebar: React.FC = () => {
   const menuItems: { id: ActivePage; label: string; icon: React.ReactNode }[] = [
     { id: 'home', label: 'Home Overview', icon: <Home size={18} /> },
     { id: 'forecast-explorer', label: 'Forecast & Blending Studio', icon: <Sliders size={18} /> },
-    { id: 'scorecard', label: 'Skill Scorecard (95% CI)', icon: <ShieldCheck size={18} /> },
+    { id: 'scorecard', label: 'Skill Scorecard', icon: <ShieldCheck size={18} /> },
     { id: 'model-duel', label: 'Model Duel Cases', icon: <Layers size={18} /> },
     { id: 'verification-lab', label: 'Verification Lab', icon: <BarChart3 size={18} /> },
     { id: 'extreme-weather', label: 'Extreme Weather Guidance', icon: <AlertTriangle size={18} /> },

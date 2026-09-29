@@ -5,7 +5,6 @@ import { Bell, User, Globe, ChevronDown, Menu, X } from 'lucide-react';
 
 export const Header: React.FC = () => {
   const { 
-    cycleTimestamp, 
     isOfflineDemo, 
     setIsOfflineDemo, 
     navigateTo,
@@ -62,8 +61,6 @@ export const Header: React.FC = () => {
         <div className="gov-header-right">
           {/* Cycle Timestamp - hidden on small mobile */}
           <div className="gov-cycle-info">
-            <span className="gov-cycle-time">{cycleTimestamp}</span>
-            <span className="gov-cycle-sep">|</span>
           </div>
 
           {/* Operational / Demo Mode Toggle Badge */}

@@ -22,7 +22,7 @@ export type ActivePage =
   | 'extreme-events'
   | 'methodology';
 
-export type MapOverlayMode = 'weight' | 'confidence';
+export type MapOverlayMode = 'blend' | 'weights' | 'agreement' | 'confidence' | 'weight';
 
 const pathToPageMap: Record<string, ActivePage> = {
   '': 'home',
@@ -116,7 +116,6 @@ interface ForecastContextValue {
   setMapOverlayMode: (mode: MapOverlayMode) => void;
   isOfflineDemo: boolean;
   setIsOfflineDemo: (val: boolean) => void;
-  cycleTimestamp: string;
   selectedDuelCaseId?: string;
   setSelectedDuelCaseId: (id: string) => void;
   timelineStepHours: number;
@@ -143,15 +142,13 @@ export const ForecastProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   const [variable, setVariable] = useState<VariableOption>('rainfall');
   const [activePage, setActivePage] = useState<ActivePage>(initialLoc.page);
   const [selectedSubdivisionId, setSelectedSubdivisionId] = useState<string>(initialLoc.subdivId || 'sub-23'); // Konkan & Goa default
-  const [mapOverlayMode, setMapOverlayMode] = useState<MapOverlayMode>('weight');
+  const [mapOverlayMode, setMapOverlayMode] = useState<MapOverlayMode>('blend');
   const [isOfflineDemo, setIsOfflineDemo] = useState<boolean>(true);
   const [selectedDuelCaseId, setSelectedDuelCaseId] = useState<string>(initialLoc.caseId || 'case-mumbai-2024');
   const [timelineStepHours, setTimelineStepHours] = useState<number>(72);
   const [isPlayingTimeline, setIsPlayingTimeline] = useState<boolean>(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-
-  const cycleTimestamp = '26 Sep 2026 | 12:00 UTC';
 
   const selectedSubdivision = SUBDIVISIONS_BY_ID.get(selectedSubdivisionId) || ALL_36_SUBDIVISIONS[22];
 
@@ -231,7 +228,6 @@ export const ForecastProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         setMapOverlayMode,
         isOfflineDemo,
         setIsOfflineDemo,
-        cycleTimestamp,
         selectedDuelCaseId,
         setSelectedDuelCaseId,
         timelineStepHours,

@@ -8,17 +8,31 @@ import { ArrowRight, AlertTriangle, Layers, Info, MapPin, Eye } from 'lucide-rea
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiYW51c2hrYW1hbGkyMDA1IiwiYSI6ImNtdWpsanoxYTFpdGoyd3BnMGZ4aDhtbjUifQ.6IjaULfuCqS1vAIcXdDs6A';
 
-export const IndiaMap: React.FC = () => {
+export interface IndiaMapProps {
+  activeMapMode?: 'blend' | 'weights' | 'agreement' | 'confidence' | 'weight';
+  selectedRosterModel?: string;
+}
+
+export const IndiaMap: React.FC<IndiaMapProps> = ({ 
+  activeMapMode: propMapMode, 
+  selectedRosterModel = 'all' 
+}) => {
   const { 
     leadTime, 
     variable, 
-    mapOverlayMode, 
+    mapOverlayMode: contextMapMode, 
     navigateTo, 
     selectedSubdivisionId, 
     setSelectedSubdivisionId,
     timelineStepHours,
     isPlayingTimeline
   } = useForecast();
+
+  // Active mode from prop or context (normalized)
+  const rawMode = propMapMode || contextMapMode || 'blend';
+  const effectiveMode: 'blend' | 'weights' | 'agreement' | 'confidence' = 
+    rawMode === 'weight' ? 'weights' : rawMode;
+
   const [mapStyleMode, setMapStyleMode] = useState<'mapbox-satellite' | 'mapbox-dark' | 'vector-svg'>('mapbox-satellite');
   const [hoveredSubdiv, setHoveredSubdiv] = useState<IMDSubdivision | null>(null);
   const [mousePos, setMousePos] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
@@ -29,23 +43,197 @@ export const IndiaMap: React.FC = () => {
 
   const stateKey = `${leadTime}_${variable}`;
 
-  // Helper for confidence color ramp (Teal -> Blue -> Deep Navy)
-  const getConfidenceColor = (spreadIndex: number): string => {
-    if (spreadIndex < 0.32) return '#0D9488';
-    if (spreadIndex < 0.48) return '#0284C7';
-    if (spreadIndex < 0.62) return '#2563EB';
-    return '#1E3A8A';
+  // Helper calculating dynamic layer visual attributes per subdivision
+  const getSubdivisionVisuals = (subdiv: IMDSubdivision) => {
+    const s = subdiv.states[stateKey] || subdiv.states['day-3_rainfall'];
+    const zone = subdiv.zone;
+
+    // 1. BLENDED FORECAST LAYER (Meteorological values)
+    if (effectiveMode === 'blend') {
+      if (variable === 'rainfall') {
+        let base = 28;
+        if (zone === 'Peninsula') base = 74;
+        else if (zone === 'NorthEast') base = 68;
+        else if (zone === 'Central' || zone === 'East') base = 35;
+        else if (zone === 'NorthWest') base = 4;
+        else if (zone === 'North') base = 18;
+
+        const leadFactor = timelineStepHours <= 24 ? 0.8 : timelineStepHours <= 72 ? 1.0 : 1.25;
+        const val = Math.round(base * leadFactor);
+
+        let color = '#3B82F6'; // < 10mm (Blue)
+        if (val >= 115.6) color = '#DC2626'; // Very Heavy (Red)
+        else if (val >= 64.5) color = '#EA580C'; // Heavy (Orange)
+        else if (val >= 35) color = '#F59E0B'; // Moderate-Heavy (Amber)
+        else if (val >= 15) color = '#10B981'; // Moderate (Green)
+        else if (val >= 5) color = '#06B6D4'; // Light (Cyan)
+
+        return {
+          color,
+          badgeText: `${val}m`,
+          fullText: `${val} mm`,
+          title: `Blended Rainfall: ${val} mm`,
+          metricName: 'Precipitation',
+          metricVal: `${val} mm/24h`
+        };
+      } else if (variable === 'temperature') {
+        let base = 32.5;
+        if (zone === 'NorthWest') base = 41.2;
+        else if (zone === 'Central') base = 37.4;
+        else if (zone === 'Peninsula') base = 30.8;
+        else if (zone === 'East') base = 33.6;
+        else if (zone === 'NorthEast') base = 28.5;
+
+        const val = Number((base + (timelineStepHours > 72 ? 1.2 : 0)).toFixed(1));
+
+        let color = '#10B981';
+        if (val >= 40.0) color = '#DC2626'; // Extreme Heat
+        else if (val >= 36.0) color = '#F97316'; // High Heat
+        else if (val >= 32.0) color = '#FBBF24'; // Warm
+        else if (val >= 26.0) color = '#10B981'; // Moderate
+        else color = '#0EA5E9'; // Cool
+
+        return {
+          color,
+          badgeText: `${Math.round(val)}°`,
+          fullText: `${val} °C`,
+          title: `Blended Temp: ${val} °C`,
+          metricName: '2m Temperature',
+          metricVal: `${val} °C`
+        };
+      } else {
+        // Wind speed
+        let base = 21;
+        if (zone === 'Peninsula' || zone === 'Islands') base = 32;
+        else if (zone === 'East') base = 38;
+        else if (zone === 'Central') base = 19;
+        else if (zone === 'NorthWest') base = 16;
+        else base = 14;
+
+        const val = Math.round(base);
+
+        let color = '#10B981';
+        if (val >= 50) color = '#7C3AED'; // Squally / Gale
+        else if (val >= 35) color = '#DC2626'; // Strong Wind
+        else if (val >= 22) color = '#F59E0B'; // Moderate Breeze
+        else color = '#10B981'; // Light
+
+        return {
+          color,
+          badgeText: `${val}k`,
+          fullText: `${val} km/h`,
+          title: `Blended Wind: ${val} km/h`,
+          metricName: '10m Wind Speed',
+          metricVal: `${val} km/h`
+        };
+      }
+    }
+
+    // 2. SPATIAL MODEL WEIGHTS LAYER
+    if (effectiveMode === 'weights') {
+      const model = MODEL_MAP.get(s.trustedModelId);
+      const isSpecific = selectedRosterModel && selectedRosterModel !== 'all';
+
+      if (isSpecific) {
+        // Find weight for the selected upstream model
+        const matchWeight = s.modelWeights.find(w => 
+          w.modelId.toLowerCase().includes(selectedRosterModel.toLowerCase()) ||
+          selectedRosterModel.toLowerCase().includes(w.modelId.toLowerCase())
+        );
+        const share = matchWeight ? matchWeight.weight : 0.22;
+        const pct = Math.round(share * 100);
+
+        let color = '#93C5FD';
+        if (pct >= 40) color = '#1E3A8A';
+        else if (pct >= 30) color = '#2563EB';
+        else if (pct >= 20) color = '#60A5FA';
+
+        return {
+          color,
+          badgeText: `${pct}%`,
+          fullText: `${pct}% Weight`,
+          title: `${selectedRosterModel.toUpperCase()} Weight: ${pct}%`,
+          metricName: 'Gating Weight',
+          metricVal: `${pct}% Share`
+        };
+      } else {
+        // Dominant model coloring
+        const modelColor = s.isFallback ? '#64748B' : (model?.color || '#2563EB');
+        const shortName = s.isFallback ? 'FALL' : (model?.name.split(' ')[0].slice(0, 4).toUpperCase() || subdiv.code.slice(0, 3));
+
+        return {
+          color: modelColor,
+          badgeText: shortName,
+          fullText: model?.name || s.trustedModelId,
+          title: `Dominant Model: ${model?.name || s.trustedModelId}`,
+          metricName: 'Dominant Model',
+          metricVal: `${model?.name || s.trustedModelId} (Skill: +${s.skillGainPercent}%)`
+        };
+      }
+    }
+
+    // 3. MODEL AGREEMENT / SPREAD LAYER
+    if (effectiveMode === 'agreement') {
+      const spread = s.disagreementSpreadIndex;
+      let color = '#10B981'; // High Agreement / Tight Consensus (< 0.32)
+      let label = 'Consensus';
+      let spreadVal = `±${(spread * 2.8).toFixed(1)}°`;
+
+      if (variable === 'rainfall') {
+        spreadVal = `±${Math.round(spread * 32)}mm`;
+      } else if (variable === 'wind') {
+        spreadVal = `±${Math.round(spread * 15)}k`;
+      }
+
+      if (spread >= 0.65) {
+        color = '#EF4444'; // High Disagreement / Model Duel
+        label = 'Model Duel';
+      } else if (spread >= 0.45) {
+        color = '#F59E0B'; // Moderate Divergence
+        label = 'Divergent';
+      } else if (spread >= 0.30) {
+        color = '#3B82F6'; // Moderate Agreement
+        label = 'Moderate';
+      }
+
+      return {
+        color,
+        badgeText: spreadVal,
+        fullText: `${label} (${spreadVal})`,
+        title: `Model Agreement: ${label} [Spread: ${(spread * 100).toFixed(0)}%]`,
+        metricName: 'Spread & Consensus',
+        metricVal: `${label} (Spread ${(spread * 100).toFixed(0)}%)`
+      };
+    }
+
+    // 4. CONFIDENCE LEVEL LAYER
+    const conf = Math.max(42, Math.min(96, Math.round(92 - s.disagreementSpreadIndex * 42)));
+    let color = '#047857'; // >= 85% Very High
+    let confLabel = 'Very High';
+
+    if (conf < 55) {
+      color = '#DC2626'; // Red Alert (<55%)
+      confLabel = 'Uncertain';
+    } else if (conf < 70) {
+      color = '#D97706'; // Amber (55-69%)
+      confLabel = 'Moderate';
+    } else if (conf < 85) {
+      color = '#0284C7'; // Blue (70-84%)
+      confLabel = 'High';
+    }
+
+    return {
+      color,
+      badgeText: `${conf}%`,
+      fullText: `${confLabel} (${conf}%)`,
+      title: `Confidence: ${confLabel} (${conf}%)`,
+      metricName: 'Confidence Rating',
+      metricVal: `${conf}% (${confLabel})`
+    };
   };
 
   const getSubdivColor = (subdiv: IMDSubdivision): string => {
-    const s = subdiv.states[stateKey] || subdiv.states['day-3_rainfall'];
-    if (mapOverlayMode === 'weight') {
-      if (s.isFallback) return '#64748B';
-      const m = MODEL_MAP.get(s.trustedModelId);
-      return m?.color || '#0B3D62';
-    } else {
-      return getConfidenceColor(s.disagreementSpreadIndex);
-    }
+    return getSubdivisionVisuals(subdiv).color;
   };
 
   // Initialize Mapbox GL Map
@@ -79,7 +267,6 @@ export const IndiaMap: React.FC = () => {
     mapboxInstanceRef.current = map;
 
     map.on('load', () => {
-      // Add subdivision markers on Mapbox
       renderMapboxMarkers(map);
     });
 
@@ -91,12 +278,12 @@ export const IndiaMap: React.FC = () => {
     };
   }, [mapStyleMode]);
 
-  // Update Mapbox markers on state change
+  // Update Mapbox markers on ANY state change including activeMapMode and selectedRosterModel
   useEffect(() => {
     if (mapboxInstanceRef.current && mapboxInstanceRef.current.isStyleLoaded()) {
       renderMapboxMarkers(mapboxInstanceRef.current);
     }
-  }, [leadTime, variable, mapOverlayMode, selectedSubdivisionId, timelineStepHours, isPlayingTimeline]);
+  }, [leadTime, variable, effectiveMode, selectedRosterModel, selectedSubdivisionId, timelineStepHours, isPlayingTimeline]);
 
   const renderMapboxMarkers = (map: mapboxgl.Map) => {
     // Clear previous markers
@@ -104,63 +291,60 @@ export const IndiaMap: React.FC = () => {
     markersRef.current = [];
 
     ALL_36_SUBDIVISIONS.forEach((subdiv) => {
-      const color = getSubdivColor(subdiv);
+      const visuals = getSubdivisionVisuals(subdiv);
       const isSelected = subdiv.id === selectedSubdivisionId;
       const s = subdiv.states[stateKey] || subdiv.states['day-3_rainfall'];
       const regime = WEATHER_REGIMES[subdiv.currentRegimeId];
       const model = MODEL_MAP.get(s.trustedModelId);
 
-      // Create Custom DOM Marker
+      // Create Custom DOM Marker with responsive badge
       const el = document.createElement('div');
       el.className = 'custom-mapbox-subdiv-marker';
-      el.style.width = isSelected ? '34px' : '26px';
-      el.style.height = isSelected ? '34px' : '26px';
+      el.style.width = isSelected ? '40px' : '32px';
+      el.style.height = isSelected ? '40px' : '32px';
       el.style.borderRadius = '50%';
-      el.style.backgroundColor = color;
-      el.style.border = isSelected ? '3px solid #FFFFFF' : '2px solid rgba(255,255,255,0.9)';
+      el.style.backgroundColor = visuals.color;
+      el.style.border = isSelected ? '3px solid #FFFFFF' : '2px solid rgba(255,255,255,0.92)';
       el.style.boxShadow = isSelected 
-        ? '0 0 14px rgba(37,99,235,0.95), 0 2px 6px rgba(0,0,0,0.5)' 
-        : isPlayingTimeline
-        ? '0 0 8px rgba(96,165,250,0.7), 0 2px 4px rgba(0,0,0,0.35)'
-        : '0 2px 4px rgba(0,0,0,0.35)';
+        ? '0 0 16px rgba(37,99,235,1), 0 3px 8px rgba(0,0,0,0.6)' 
+        : '0 2px 5px rgba(0,0,0,0.45)';
       el.style.cursor = 'pointer';
       el.style.display = 'flex';
       el.style.alignItems = 'center';
       el.style.justifyContent = 'center';
       el.style.color = '#FFFFFF';
-      el.style.fontSize = isSelected ? '10px' : '8.5px';
-      el.style.fontWeight = '700';
-      el.style.transition = 'all 0.25s ease';
-      el.innerText = subdiv.code.slice(0, 3);
+      el.style.fontSize = isSelected ? '10.5px' : '9px';
+      el.style.fontWeight = '800';
+      el.style.letterSpacing = '-0.3px';
+      el.style.transition = 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)';
+      el.innerText = visuals.badgeText;
 
       el.addEventListener('click', () => {
         setSelectedSubdivisionId(subdiv.id);
         navigateTo('explainability', subdiv.id);
       });
 
-      // Mapbox Popup
+      // Layer-sensitive Mapbox Popup
       const popupHtml = `
-        <div style="font-family: sans-serif; padding: 4px; color: #1F2933;">
-          <div style="font-weight: 700; font-size: 13px; color: #0B3D62; margin-bottom: 2px;">
+        <div style="font-family: sans-serif; padding: 4px; color: #1F2933; min-width: 175px;">
+          <div style="font-weight: 800; font-size: 13px; color: #0B3D62; margin-bottom: 2px;">
             ${subdiv.name} [${subdiv.code}]
           </div>
-          <div style="font-size: 10px; color: #64748B; margin-bottom: 4px;">
-            Horizon: <strong>+${timelineStepHours}h Lead</strong> &bull; Cycle: 26 Sep 12Z
+          <div style="font-size: 10.5px; color: #64748B; margin-bottom: 4px;">
+            Horizon: <strong>+${timelineStepHours}h Lead</strong> &bull; Layer: <strong style="color: #2563EB; text-transform: capitalize;">${effectiveMode}</strong>
           </div>
-          <div style="font-size: 11px; margin-bottom: 4px;">
-            <span style="background: ${regime?.badgeBg || '#1D4ED8'}; color: #FFF; padding: 1px 6px; border-radius: 9999px; font-weight: 600;">
-              ${regime?.shortLabel}
-            </span>
+          <div style="margin-bottom: 4px; padding: 4px 6px; background: #F8FAFC; border-radius: 4px; border-left: 3px solid ${visuals.color};">
+            <div style="font-size: 10px; color: #64748B; text-transform: uppercase; font-weight: 700;">${visuals.metricName}</div>
+            <div style="font-size: 13.5px; font-weight: 800; color: #0F172A;">${visuals.metricVal}</div>
           </div>
-          <div style="font-size: 11.5px; margin-bottom: 2px;">
-            <strong>Trusted:</strong> ${model?.name || s.trustedModelId}
+          <div style="font-size: 11px; margin-bottom: 3px;">
+            <strong>Dominant Source:</strong> ${model?.name || s.trustedModelId}
           </div>
-          <div style="font-size: 11.5px; color: ${s.skillGainPercent >= 0 ? '#15803D' : '#DC2626'}; font-weight: 700;">
+          <div style="font-size: 11px; color: ${s.skillGainPercent >= 0 ? '#15803D' : '#DC2626'}; font-weight: 700;">
             Skill Gain: ${s.skillGainPercent >= 0 ? `+${s.skillGainPercent}%` : `${s.skillGainPercent}%`}
-            <span style="font-size: 10px; color: #64748B; font-weight: 400;">[${s.skillGainCiLower}% to ${s.skillGainCiUpper}%]</span>
           </div>
-          <div style="font-size: 10.5px; color: #2563EB; font-weight: 600; margin-top: 4px; text-align: right;">
-            Click marker to inspect →
+          <div style="font-size: 10px; color: #2563EB; font-weight: 600; margin-top: 4px; text-align: right;">
+            Click to inspect feature weights →
           </div>
         </div>
       `;
@@ -250,7 +434,7 @@ export const IndiaMap: React.FC = () => {
           <g id="subdivisions-layer">
             {ALL_36_SUBDIVISIONS.map((subdiv) => {
               const isSelected = subdiv.id === selectedSubdivisionId;
-              const fillColor = getSubdivColor(subdiv);
+              const visuals = getSubdivisionVisuals(subdiv);
 
               return (
                 <g 
@@ -265,11 +449,11 @@ export const IndiaMap: React.FC = () => {
                   <path
                     d={subdiv.mapCoords.path}
                     className="map-subdivision-path"
-                    fill={fillColor}
-                    fillOpacity={isSelected ? 1.0 : 0.85}
+                    fill={visuals.color}
+                    fillOpacity={isSelected ? 1.0 : 0.88}
                     stroke={isSelected ? '#0B3D62' : '#FFFFFF'}
                     strokeWidth={isSelected ? '2.5' : '1.2'}
-                    style={{ cursor: 'pointer' }}
+                    style={{ cursor: 'pointer', transition: 'fill 0.25s ease' }}
                   />
                   <text
                     x={subdiv.mapCoords.cx}
@@ -277,11 +461,11 @@ export const IndiaMap: React.FC = () => {
                     textAnchor="middle"
                     dominantBaseline="central"
                     fill="#FFFFFF"
-                    fontSize="11px"
-                    fontWeight="700"
-                    style={{ pointerEvents: 'none', textShadow: '0 1px 2px rgba(0,0,0,0.85)', userSelect: 'none' }}
+                    fontSize="10px"
+                    fontWeight="800"
+                    style={{ pointerEvents: 'none', textShadow: '0 1px 3px rgba(0,0,0,0.9)', userSelect: 'none' }}
                   >
-                    {subdiv.code}
+                    {visuals.badgeText}
                   </text>
                 </g>
               );
@@ -312,6 +496,7 @@ export const IndiaMap: React.FC = () => {
             const state = hoveredSubdiv.states[stateKey] || hoveredSubdiv.states['day-3_rainfall'];
             const regime = WEATHER_REGIMES[hoveredSubdiv.currentRegimeId];
             const trustedModel = MODEL_MAP.get(state.trustedModelId);
+            const visuals = getSubdivisionVisuals(hoveredSubdiv);
 
             return (
               <>
@@ -322,6 +507,15 @@ export const IndiaMap: React.FC = () => {
                   <span style={{ fontSize: '0.7rem', fontWeight: 600, color: 'var(--color-muted)' }}>
                     [{hoveredSubdiv.code}]
                   </span>
+                </div>
+
+                <div style={{ margin: '0.4rem 0', padding: '0.35rem 0.5rem', background: '#F8FAFC', borderRadius: '4px', borderLeft: `3px solid ${visuals.color}` }}>
+                  <div style={{ fontSize: '0.65rem', color: '#64748B', textTransform: 'uppercase', fontWeight: 700 }}>
+                    Active Layer: {effectiveMode}
+                  </div>
+                  <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0F172A' }}>
+                    {visuals.metricVal}
+                  </div>
                 </div>
 
                 <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center', marginBottom: '0.5rem' }}>
@@ -347,20 +541,10 @@ export const IndiaMap: React.FC = () => {
                   <span style={{ color: 'var(--color-muted)' }}>Skill gain vs best single:</span>
                   <span style={{ fontWeight: 700, color: state.skillGainPercent >= 0 ? '#15803D' : '#B91C1C' }}>
                     {state.skillGainPercent >= 0 ? `+${state.skillGainPercent}%` : `${state.skillGainPercent}%`}
-                    <span style={{ fontSize: '0.7rem', color: 'var(--color-muted)', fontWeight: 400, marginLeft: '4px' }}>
-                      [{state.skillGainCiLower}% to {state.skillGainCiUpper}%]
-                    </span>
                   </span>
                 </div>
 
-                <div style={{ fontSize: '0.78rem', marginBottom: '0.5rem', display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: 'var(--color-muted)' }}>Inter-model spread:</span>
-                  <span style={{ fontWeight: 600, color: getConfidenceColor(state.disagreementSpreadIndex) }}>
-                    {(state.disagreementSpreadIndex * 100).toFixed(0)}%
-                  </span>
-                </div>
-
-                <div style={{ fontSize: '0.72rem', color: 'var(--color-primary-light)', fontWeight: 600, textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.2rem' }}>
+                <div style={{ fontSize: '0.72rem', color: 'var(--color-primary-light)', fontWeight: 600, textAlign: 'right', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.2rem', marginTop: '4px' }}>
                   <span>Click for full feature importance & duel</span>
                   <ArrowRight size={11} />
                 </div>

@@ -414,32 +414,96 @@ export const PageForecastExplorer: React.FC = () => {
 
           {/* Interactive Subdivision Map */}
           <div style={{ position: 'relative', flex: 1, minHeight: '430px' }}>
-            <IndiaMap />
+            <IndiaMap activeMapMode={activeMapMode} selectedRosterModel={selectedRosterModel} />
 
             {/* Contextual Legend overlay */}
-            <div className="map-legend-overlay">
-              {activeMapMode === 'weights' ? (
+            <div className="map-legend-overlay" style={{ background: 'rgba(255, 255, 255, 0.95)', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '6px 10px', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
+              {activeMapMode === 'blend' && (
                 <>
-                  <div style={{ fontWeight: 700, marginBottom: '4px', color: 'var(--color-ink)' }}>Weight Share</div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#1E3A8A' }}></span> &gt; 50% Primary</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#2563EB' }}></span> 35 – 50% High</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#60A5FA' }}></span> 20 – 35% Med</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#BFDBFE' }}></span> 10 – 20% Low</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#F1F5F9' }}></span> &lt; 10% Min</div>
+                  <div style={{ fontWeight: 800, fontSize: '0.72rem', marginBottom: '4px', color: 'var(--color-ink)' }}>
+                    {pointVarTab === 'rainfall' ? 'Rainfall (mm/24h)' : pointVarTab === 'temperature' ? '2m Temperature (°C)' : '10m Wind (km/h)'}
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '0.68rem' }}>
+                    {pointVarTab === 'rainfall' ? (
+                      <>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#DC2626' }}></span> &gt; 115mm (Very Heavy)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#EA580C' }}></span> 65 – 115mm (Heavy)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#F59E0B' }}></span> 35 – 65mm (Moderate-Heavy)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#10B981' }}></span> 15 – 35mm (Moderate)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#06B6D4' }}></span> 5 – 15mm (Light)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#3B82F6' }}></span> &lt; 5mm (Trace / Dry)</div>
+                      </>
+                    ) : pointVarTab === 'temperature' ? (
+                      <>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#DC2626' }}></span> &gt; 40°C (Extreme Heat)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#F97316' }}></span> 36 – 40°C (Warm / Warning)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#FBBF24' }}></span> 32 – 36°C (Moderate Heat)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#10B981' }}></span> 26 – 32°C (Comfort / Normal)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#0EA5E9' }}></span> &lt; 26°C (Pleasant / Cool)</div>
+                      </>
+                    ) : (
+                      <>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#7C3AED' }}></span> &gt; 50 km/h (Gale / Storm)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#DC2626' }}></span> 35 – 50 km/h (Squally)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#F59E0B' }}></span> 22 – 35 km/h (Breezy)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#10B981' }}></span> &lt; 22 km/h (Light / Normal)</div>
+                      </>
+                    )}
                   </div>
                 </>
-              ) : (
+              )}
+
+              {activeMapMode === 'weights' && (
                 <>
-                  <div style={{ fontWeight: 700, marginBottom: '4px', color: 'var(--color-ink)' }}>Rainfall (mm)</div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#D64545' }}></span> 200+</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#F08A3C' }}></span> 100</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#F2C230' }}></span> 50</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#2E9E4F' }}></span> 25</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#0284C7' }}></span> 10</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#0B3D62' }}></span> 5</div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}><span style={{ width: '10px', height: '10px', background: '#E2E8F0' }}></span> 0</div>
+                  <div style={{ fontWeight: 800, fontSize: '0.72rem', marginBottom: '4px', color: 'var(--color-ink)' }}>
+                    {selectedRosterModel !== 'all' ? `${getRosterModelName(selectedRosterModel).split(' ')[0]} Share` : 'Dominant Gated Model'}
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '0.68rem' }}>
+                    {selectedRosterModel !== 'all' ? (
+                      <>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#1E3A8A' }}></span> &gt; 40% (Primary)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#2563EB' }}></span> 30 – 40% (High)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#60A5FA' }}></span> 20 – 30% (Moderate)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#93C5FD' }}></span> &lt; 20% (Low)</div>
+                      </>
+                    ) : (
+                      <>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#2563EB' }}></span> NCUM-G Mithuna (12km)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#0D9488' }}></span> NEPS-R (4km Convective)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#9333EA' }}></span> Pangu-Weather (AI)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#10B981' }}></span> GraphCast (AI GNN)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#0284C7' }}></span> ECMWF IFS / HRES (9km)</div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#64748B' }}></span> Fallback to Leading Single</div>
+                      </>
+                    )}
+                  </div>
+                </>
+              )}
+
+              {activeMapMode === 'agreement' && (
+                <>
+                  <div style={{ fontWeight: 800, fontSize: '0.72rem', marginBottom: '4px', color: 'var(--color-ink)' }}>
+                    Inter-Model Agreement (σ Spread)
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '0.68rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#10B981' }}></span> Tight Consensus (&lt; 30% σ)</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#3B82F6' }}></span> Moderate Agreement (30 – 45%)</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#F59E0B' }}></span> Divergent Spread (45 – 65%)</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#EF4444' }}></span> Model Duel / Conflict (&gt; 65%)</div>
+                  </div>
+                </>
+              )}
+
+              {activeMapMode === 'confidence' && (
+                <>
+                  <div style={{ fontWeight: 800, fontSize: '0.72rem', marginBottom: '4px', color: 'var(--color-ink)' }}>
+                    Calibrated Confidence Rating
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', fontSize: '0.68rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#047857' }}></span> &gt; 85% Very High Confidence</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#0284C7' }}></span> 70 – 85% High Reliability</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#D97706' }}></span> 55 – 70% Moderate (Monitor)</div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '10px', height: '10px', borderRadius: '2px', background: '#DC2626' }}></span> &lt; 55% Low (Fallback Triggered)</div>
                   </div>
                 </>
               )}

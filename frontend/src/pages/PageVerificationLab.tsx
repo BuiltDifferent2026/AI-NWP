@@ -95,28 +95,6 @@ export const PageVerificationLab: React.FC = () => {
         ))}
       </div>
 
-      {/* 2. Sub-Tabs Bar matching mockups */}
-      <div style={{ display: 'flex', gap: '0.5rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '0.5rem', marginBottom: '1.25rem', overflowX: 'auto' }}>
-        {[
-          { id: 'summary', label: 'Summary' },
-          { id: 'regional', label: 'Score by Region' },
-          { id: 'reliability', label: 'Reliability & Calibration' },
-          { id: 'leadtime', label: 'Lead Time Analysis' },
-          { id: 'ablation', label: 'Ablation Study' },
-          { id: 'cases', label: 'Case Studies' },
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            className={`pill-btn ${activeSubTab === tab.id ? 'active' : ''}`}
-            onClick={() => setActiveSubTab(tab.id as any)}
-            style={{ fontSize: '0.8rem', padding: '0.4rem 0.85rem' }}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
       {/* 3. Top Row: Model Performance Comparison Table (Col 7) + Reliability & Rank Histogram (Col 5) */}
       <div className="grid-12" style={{ marginBottom: '1.5rem' }}>
         {/* Table */}
