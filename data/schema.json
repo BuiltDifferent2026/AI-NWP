@@ -1,0 +1,11 @@
+{
+  "features": [
+    "hres_rain",
+    "latitude",
+    "longitude",
+    "month",
+    "day",
+    "hour"
+  ],
+  "target": "actual_rain"
+}

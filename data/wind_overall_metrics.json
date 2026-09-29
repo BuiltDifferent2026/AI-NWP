@@ -1,0 +1,79 @@
+{
+  "data_mode": "historical_replay",
+  "variable": "10m_wind_speed",
+  "unit": "m/s",
+  "sources": [
+    {
+      "id": "hres",
+      "label": "IFS HRES",
+      "type": "physical_nwp",
+      "status": "public_proxy_evaluated"
+    },
+    {
+      "id": "pangu",
+      "label": "Pangu-Weather",
+      "type": "ai_weather_model",
+      "status": "public_proxy_evaluated"
+    },
+    {
+      "id": "ens",
+      "label": "IFS ENS Mean",
+      "type": "ensemble_nwp",
+      "status": "public_proxy_evaluated"
+    }
+  ],
+  "evaluation": {
+    "train_period": "2018-2019",
+    "validation_period": "2020",
+    "test_period": "2021",
+    "grid": "Synthetic India-like grid (8 lats \u00d7 6 lons)",
+    "lead_hours": [
+      24,
+      72,
+      120,
+      168
+    ],
+    "truth_source": "Synthetic truth",
+    "selected_beta": 2.0
+  },
+  "metrics": {
+    "HyBlend Adaptive": {
+      "MAE": 0.5864759313381495,
+      "RMSE": 0.8458845715955213,
+      "Bias": -0.012053342304965318
+    },
+    "Equal Weight": {
+      "MAE": 1.1281407934727565,
+      "RMSE": 1.4152578950513706,
+      "Bias": 0.015222118633744276
+    },
+    "Pangu": {
+      "MAE": 1.4257255603019192,
+      "RMSE": 1.7840582570506034,
+      "Bias": -0.0022565741854090678
+    },
+    "IFS ENS Mean": {
+      "MAE": 1.6113446023012346,
+      "RMSE": 2.0139905441889177,
+      "Bias": 0.01985903813096811
+    },
+    "HRES": {
+      "MAE": 1.7490589510069405,
+      "RMSE": 2.1796412108110133,
+      "Bias": 0.02806389195567379
+    }
+  },
+  "hyblend_skill_gain_vs_best_individual_pct": 52.58649384051317,
+  "best_individual_model": "Pangu",
+  "issued_policy_metrics": {
+    "MAE": 0.5864759313381495,
+    "RMSE": 0.8458845715955213,
+    "Bias": -0.012053342304965318
+  },
+  "bootstrap_skill_gain_95ci": {
+    "original_gain_pct": 52.58649384051317,
+    "ci_lower_95": 52.19104735794829,
+    "ci_upper_95": 52.98043118409257,
+    "bootstrap_std": 0.19759612490825643
+  }
+}

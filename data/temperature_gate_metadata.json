@@ -1,0 +1,60 @@
+{
+  "project": "HyBlend",
+  "variable": "2m_temperature",
+  "unit": "celsius",
+  "forecast_sources": [
+    "HRES",
+    "Pangu-Weather",
+    "IFS ENS Mean"
+  ],
+  "train_period": "2018-01-01 to 2019-12-31",
+  "validation_period": "2020-01-01 to 2020-12-31",
+  "test_period": "2021-01-01 to 2021-12-31",
+  "leads_hours": [
+    24,
+    72,
+    120,
+    168
+  ],
+  "gate_method": "LightGBM source-specific future absolute error prediction with softmax weighting",
+  "feature_columns": [
+    "hres",
+    "pangu",
+    "ens",
+    "forecast_mean",
+    "forecast_std",
+    "forecast_spread",
+    "latitude",
+    "longitude",
+    "lead_hours",
+    "month_sin",
+    "month_cos",
+    "hres_skill_mae",
+    "pangu_skill_mae",
+    "ens_skill_mae",
+    "hres_skill_bias",
+    "pangu_skill_bias",
+    "ens_skill_bias",
+    "hres_relative_skill",
+    "pangu_relative_skill",
+    "ens_relative_skill",
+    "region_zone",
+    "regime"
+  ],
+  "categorical_features": [
+    "region_zone",
+    "regime"
+  ],
+  "data_mode": "historical_replay",
+  "ncmrwf_operational_data_access": false,
+  "test_years": [
+    2021
+  ],
+  "train_rows": 174120,
+  "validation_rows": 86880,
+  "test_rows": 86640,
+  "selected_beta": 3.0,
+  "test_best_individual": "Pangu",
+  "test_hyblend_rmse": 0.8566540479660034,
+  "test_skill_gain_pct": 9.541283098680287
+}

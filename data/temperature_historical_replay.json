@@ -1,0 +1,46 @@
+{
+  "data_mode": "historical_replay",
+  "title": "HyBlend Temperature Historical Replay",
+  "context": {
+    "valid_time": "2021-01-15 00:00:00",
+    "init_time": "2021-01-10 00:00:00",
+    "lead_hours": 120,
+    "latitude": 36.562499999999986,
+    "longitude": 73.125,
+    "region_zone": "himalayan_north",
+    "regime": "normal"
+  },
+  "observation": {
+    "value": -15.67974853515625,
+    "unit": "celsius",
+    "source": "ERA5 reanalysis"
+  },
+  "forecasts": {
+    "hres": {
+      "value": -8.632080078125,
+      "weight": 4.531010301565704e-08
+    },
+    "pangu": {
+      "value": -17.927398681640625,
+      "weight": 0.45807591291062083
+    },
+    "ens": {
+      "value": -15.12939453125,
+      "weight": 0.5419240417792761
+    },
+    "hyblend": {
+      "value": -16.41109275817871,
+      "selected": true
+    }
+  },
+  "confidence": {
+    "label": "Medium",
+    "forecast_spread_c": 9.295318603515625
+  },
+  "reasoning": [
+    "Weights are generated from source-specific predicted future error.",
+    "Historical skill is calculated using past-only rolling error windows.",
+    "The blend is issued because validation policy approved adaptive blending for this context."
+  ],
+  "fallback_active": false
+}

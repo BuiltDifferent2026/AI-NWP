@@ -1,0 +1,968 @@
+{
+  "data_mode": "historical_replay",
+  "coverage": "Synthetic India-like grid",
+  "variable": "10m_wind_speed",
+  "unit": "m/s",
+  "records": [
+    {
+      "lead_hours": 24,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "monsoon_background",
+      "sample_count": 1464,
+      "weights": {
+        "hres": 0.292240238707291,
+        "pangu": 0.38043710361245736,
+        "ens": 0.3273226576802517
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5075948713197231,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "normal",
+      "sample_count": 1080,
+      "weights": {
+        "hres": 0.2922886547747563,
+        "pangu": 0.378337554262037,
+        "ens": 0.3293737909632067
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5459546454047994,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 732,
+      "weights": {
+        "hres": 0.31524295997517243,
+        "pangu": 0.35492386246536844,
+        "ens": 0.3298331775594591
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4257739170991377,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1104,
+      "weights": {
+        "hres": 0.2929371297280955,
+        "pangu": 0.3807223564579139,
+        "ens": 0.32634051381399054
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5550700192928746,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "Northeast_India",
+      "regime": "monsoon_background",
+      "sample_count": 976,
+      "weights": {
+        "hres": 0.2989597646174088,
+        "pangu": 0.39140465924372075,
+        "ens": 0.30963557613887044
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5412068726682144,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "Northeast_India",
+      "regime": "normal",
+      "sample_count": 720,
+      "weights": {
+        "hres": 0.30598003438032617,
+        "pangu": 0.36226018931543613,
+        "ens": 0.3317597763042377
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5537772629114361,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "Northeast_India",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 488,
+      "weights": {
+        "hres": 0.301398681587325,
+        "pangu": 0.38189440481706854,
+        "ens": 0.31670691359560643
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.6316765757952345,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "Northeast_India",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 736,
+      "weights": {
+        "hres": 0.2984069501175329,
+        "pangu": 0.3848117484665149,
+        "ens": 0.31678130141595223
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5341395283479746,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "Northwest_India",
+      "regime": "monsoon_background",
+      "sample_count": 1952,
+      "weights": {
+        "hres": 0.2940997302377621,
+        "pangu": 0.3863045329236531,
+        "ens": 0.3195957368385848
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.561566228202742,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "Northwest_India",
+      "regime": "normal",
+      "sample_count": 1440,
+      "weights": {
+        "hres": 0.295025962574016,
+        "pangu": 0.3862803999347346,
+        "ens": 0.3186936374912494
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5749190776509965,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "Northwest_India",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 976,
+      "weights": {
+        "hres": 0.3069185841085468,
+        "pangu": 0.3610727698835509,
+        "ens": 0.3320086460079023
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5351459697696699,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "Northwest_India",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1472,
+      "weights": {
+        "hres": 0.29624479945283716,
+        "pangu": 0.3775990227507872,
+        "ens": 0.3261561777963755
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5441638473023092,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "monsoon_background",
+      "sample_count": 1464,
+      "weights": {
+        "hres": 0.30710450403793804,
+        "pangu": 0.3756263169640559,
+        "ens": 0.31726917899800605
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4706469571251757,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "normal",
+      "sample_count": 1080,
+      "weights": {
+        "hres": 0.2884110113272393,
+        "pangu": 0.3892547469195689,
+        "ens": 0.32233424175319175
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5279542747123878,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 732,
+      "weights": {
+        "hres": 0.3078028796762059,
+        "pangu": 0.3781823643572124,
+        "ens": 0.3140147559665816
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4311270433211907,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +24h."
+    },
+    {
+      "lead_hours": 24,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1104,
+      "weights": {
+        "hres": 0.2911840761135857,
+        "pangu": 0.37054857036623867,
+        "ens": 0.3382673535201756
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5510092706272607,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +24h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "monsoon_background",
+      "sample_count": 1464,
+      "weights": {
+        "hres": 0.28438348547819425,
+        "pangu": 0.38592160404900816,
+        "ens": 0.32969491047279764
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.528530702123715,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "normal",
+      "sample_count": 1080,
+      "weights": {
+        "hres": 0.2962991998107022,
+        "pangu": 0.3831343271258552,
+        "ens": 0.3205664730634426
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5336079498598434,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 732,
+      "weights": {
+        "hres": 0.29862714698572385,
+        "pangu": 0.36352608579705104,
+        "ens": 0.3378467672172251
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4872798764543984,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1104,
+      "weights": {
+        "hres": 0.30747469236069447,
+        "pangu": 0.3734883250366476,
+        "ens": 0.3190369826026579
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5511515985514264,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "Northeast_India",
+      "regime": "monsoon_background",
+      "sample_count": 976,
+      "weights": {
+        "hres": 0.31282873595536415,
+        "pangu": 0.3753616980952636,
+        "ens": 0.3118095659493723
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.541286777088301,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "Northeast_India",
+      "regime": "normal",
+      "sample_count": 720,
+      "weights": {
+        "hres": 0.3005161373856516,
+        "pangu": 0.36756967314988725,
+        "ens": 0.3319141894644611
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5942970013256939,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "Northeast_India",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 488,
+      "weights": {
+        "hres": 0.29761249220767444,
+        "pangu": 0.3788182269400575,
+        "ens": 0.32356928085226805
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5349428321413507,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "Northeast_India",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 736,
+      "weights": {
+        "hres": 0.28665762898272773,
+        "pangu": 0.377479944641178,
+        "ens": 0.33586242637609426
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5120389260158151,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "Northwest_India",
+      "regime": "monsoon_background",
+      "sample_count": 1952,
+      "weights": {
+        "hres": 0.2885051264414638,
+        "pangu": 0.3856332319075443,
+        "ens": 0.3258616416509919
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5360441381834675,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "Northwest_India",
+      "regime": "normal",
+      "sample_count": 1440,
+      "weights": {
+        "hres": 0.295619366447382,
+        "pangu": 0.37790059384087776,
+        "ens": 0.3264800397117403
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.6048686361872297,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "Northwest_India",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 976,
+      "weights": {
+        "hres": 0.27960278282370343,
+        "pangu": 0.37956449787873353,
+        "ens": 0.34083271929756304
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4735152377548713,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "Northwest_India",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1472,
+      "weights": {
+        "hres": 0.2900533976820811,
+        "pangu": 0.371280724294099,
+        "ens": 0.33866587802382
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5992849785436734,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "monsoon_background",
+      "sample_count": 1464,
+      "weights": {
+        "hres": 0.30679637023457945,
+        "pangu": 0.37606176396578284,
+        "ens": 0.3171418657996377
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5110580236994648,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "normal",
+      "sample_count": 1080,
+      "weights": {
+        "hres": 0.30423735097581645,
+        "pangu": 0.37382505185814685,
+        "ens": 0.32193759716603665
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5001249234052125,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 732,
+      "weights": {
+        "hres": 0.29500313409864,
+        "pangu": 0.36683358201522104,
+        "ens": 0.338163283886139
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4216554899060523,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +72h."
+    },
+    {
+      "lead_hours": 72,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1104,
+      "weights": {
+        "hres": 0.30101250683395164,
+        "pangu": 0.37901987000448006,
+        "ens": 0.3199676231615683
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5401753512084542,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +72h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "monsoon_background",
+      "sample_count": 1464,
+      "weights": {
+        "hres": 0.3082807381358374,
+        "pangu": 0.37453641524696596,
+        "ens": 0.31718284661719665
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5309253599858579,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "normal",
+      "sample_count": 1080,
+      "weights": {
+        "hres": 0.3002954135374306,
+        "pangu": 0.37770959799947107,
+        "ens": 0.3219949884630983
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5426344547002802,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 732,
+      "weights": {
+        "hres": 0.31515640580204896,
+        "pangu": 0.3672224788356836,
+        "ens": 0.31762111536226745
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4863216413958322,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1104,
+      "weights": {
+        "hres": 0.3058037950037911,
+        "pangu": 0.362956526882761,
+        "ens": 0.33123967811344784
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5544300678639091,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "Northeast_India",
+      "regime": "monsoon_background",
+      "sample_count": 976,
+      "weights": {
+        "hres": 0.2859967668587202,
+        "pangu": 0.3828138559709563,
+        "ens": 0.3311893771703235
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5687247064481349,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "Northeast_India",
+      "regime": "normal",
+      "sample_count": 720,
+      "weights": {
+        "hres": 0.2985727549294366,
+        "pangu": 0.3678180088813139,
+        "ens": 0.33360923618924954
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5706592020991303,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "Northeast_India",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 488,
+      "weights": {
+        "hres": 0.30418705307530935,
+        "pangu": 0.34809471218661264,
+        "ens": 0.347718234738078
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.575529531687201,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "Northeast_India",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 736,
+      "weights": {
+        "hres": 0.3155265716517551,
+        "pangu": 0.363357779047734,
+        "ens": 0.32111564930051095
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5800247490797326,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "Northwest_India",
+      "regime": "monsoon_background",
+      "sample_count": 1952,
+      "weights": {
+        "hres": 0.29227212297726435,
+        "pangu": 0.3693445610584152,
+        "ens": 0.33838331596432053
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5638793880476898,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "Northwest_India",
+      "regime": "normal",
+      "sample_count": 1440,
+      "weights": {
+        "hres": 0.3034735902641264,
+        "pangu": 0.3601099721105949,
+        "ens": 0.3364164376252787
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5341689321341019,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "Northwest_India",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 976,
+      "weights": {
+        "hres": 0.3027272220849964,
+        "pangu": 0.37986463099517004,
+        "ens": 0.31740814691983354
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5368403670826765,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "Northwest_India",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1472,
+      "weights": {
+        "hres": 0.3043156800658786,
+        "pangu": 0.35855310400759455,
+        "ens": 0.3371312159265269
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5955174378548513,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "monsoon_background",
+      "sample_count": 1464,
+      "weights": {
+        "hres": 0.3046960724166848,
+        "pangu": 0.36151988747137687,
+        "ens": 0.33378404011193824
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.496986350686645,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "normal",
+      "sample_count": 1080,
+      "weights": {
+        "hres": 0.29446340269183785,
+        "pangu": 0.370490053615949,
+        "ens": 0.33504654369221315
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.511224831252465,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 732,
+      "weights": {
+        "hres": 0.303826641035773,
+        "pangu": 0.3691667535861567,
+        "ens": 0.32700660537807036
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4680386895587936,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +120h."
+    },
+    {
+      "lead_hours": 120,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1104,
+      "weights": {
+        "hres": 0.2903017021379697,
+        "pangu": 0.36582959246446556,
+        "ens": 0.34386870539756476
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5496824421718536,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +120h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "monsoon_background",
+      "sample_count": 1464,
+      "weights": {
+        "hres": 0.29524023826173845,
+        "pangu": 0.38724022586362916,
+        "ens": 0.3175195358746324
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.487981693577044,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "normal",
+      "sample_count": 1080,
+      "weights": {
+        "hres": 0.3040681996179403,
+        "pangu": 0.36867015074457526,
+        "ens": 0.3272616496374845
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5295972306070567,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 732,
+      "weights": {
+        "hres": 0.3089493693647399,
+        "pangu": 0.37232138684035976,
+        "ens": 0.3187292437949004
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4600590884373357,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "East_Coast_Bay_of_Bengal",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1104,
+      "weights": {
+        "hres": 0.29761295421037576,
+        "pangu": 0.3766750267170099,
+        "ens": 0.3257120190726143
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.582448155974294,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "Northeast_India",
+      "regime": "monsoon_background",
+      "sample_count": 976,
+      "weights": {
+        "hres": 0.2942023169487731,
+        "pangu": 0.3808725152811158,
+        "ens": 0.3249251677701111
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5118355314627598,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "Northeast_India",
+      "regime": "normal",
+      "sample_count": 720,
+      "weights": {
+        "hres": 0.298826140687146,
+        "pangu": 0.3741086765091572,
+        "ens": 0.32706518280369684
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.570409095616636,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "Northeast_India",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 488,
+      "weights": {
+        "hres": 0.27111645027977277,
+        "pangu": 0.4074758402351614,
+        "ens": 0.3214077094850658
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5308183044867472,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "Northeast_India",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 736,
+      "weights": {
+        "hres": 0.2925801415935356,
+        "pangu": 0.37402189419064646,
+        "ens": 0.33339796421581797
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5295710851827626,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "Northwest_India",
+      "regime": "monsoon_background",
+      "sample_count": 1952,
+      "weights": {
+        "hres": 0.2930320120649755,
+        "pangu": 0.37741046274348483,
+        "ens": 0.32955752519153964
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5401519223231042,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "Northwest_India",
+      "regime": "normal",
+      "sample_count": 1440,
+      "weights": {
+        "hres": 0.3017093520516214,
+        "pangu": 0.37195482170069927,
+        "ens": 0.3263358262476794
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.6073957796342013,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "Northwest_India",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 976,
+      "weights": {
+        "hres": 0.2890453523104931,
+        "pangu": 0.3856329059196716,
+        "ens": 0.3253217417698353
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5046258241976478,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "Northwest_India",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1472,
+      "weights": {
+        "hres": 0.2792220025423268,
+        "pangu": 0.3865243518385129,
+        "ens": 0.33425364561916027
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.5579356122755672,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "monsoon_background",
+      "sample_count": 1464,
+      "weights": {
+        "hres": 0.30407057342519,
+        "pangu": 0.3712967662356207,
+        "ens": 0.32463266033918925
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4620144700698086,
+      "explanation": "Pangu receives the highest mean weight for monsoon_background conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "normal",
+      "sample_count": 1080,
+      "weights": {
+        "hres": 0.2795881339495615,
+        "pangu": 0.39003283306329706,
+        "ens": 0.33037903298714144
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.546967004144929,
+      "explanation": "Pangu receives the highest mean weight for normal conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "post_monsoon_disturbed",
+      "sample_count": 732,
+      "weights": {
+        "hres": 0.2991189209365152,
+        "pangu": 0.3776751841202924,
+        "ens": 0.32320589494319235
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.4236594379650453,
+      "explanation": "Pangu receives the highest mean weight for post_monsoon_disturbed conditions at +168h."
+    },
+    {
+      "lead_hours": 168,
+      "region_zone": "West_Coast_Arabian_Sea",
+      "regime": "pre_monsoon_heat",
+      "sample_count": 1104,
+      "weights": {
+        "hres": 0.3040542657974991,
+        "pangu": 0.37321917864283166,
+        "ens": 0.3227265555596692
+      },
+      "dominant_model": "Pangu",
+      "fallback_rate_pct": 0.0,
+      "mean_forecast_spread_c": 1.54818319534867,
+      "explanation": "Pangu receives the highest mean weight for pre_monsoon_heat conditions at +168h."
+    }
+  ]
+}

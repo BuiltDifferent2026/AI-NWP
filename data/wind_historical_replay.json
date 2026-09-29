@@ -1,0 +1,46 @@
+{
+  "data_mode": "historical_replay",
+  "title": "HyBlend Wind Historical Replay",
+  "context": {
+    "valid_time": "2021-01-17 00:00:00",
+    "init_time": "2021-01-12 00:00:00",
+    "lead_hours": 120,
+    "latitude": 5.0,
+    "longitude": 90.0,
+    "region_zone": "East_Coast_Bay_of_Bengal",
+    "regime": "normal"
+  },
+  "observation": {
+    "value": 4.869381139072552,
+    "unit": "m/s",
+    "source": "Synthetic truth"
+  },
+  "forecasts": {
+    "hres": {
+      "value": 10.625800228532556,
+      "weight": 3.8340405933915214e-05
+    },
+    "pangu": {
+      "value": 4.540932142150362,
+      "weight": 0.9994847383196713
+    },
+    "ens": {
+      "value": 0.46508116382711506,
+      "weight": 0.00047692127439475886
+    },
+    "hyblend": {
+      "value": 4.539221578420023,
+      "selected": true
+    }
+  },
+  "confidence": {
+    "label": "Medium",
+    "forecast_spread_c": 5.11335494462034
+  },
+  "reasoning": [
+    "Weights are generated from source-specific predicted future error.",
+    "Historical skill is calculated using past-only rolling error windows.",
+    "The blend is issued because validation policy approved adaptive blending for this context."
+  ],
+  "fallback_active": false
+}

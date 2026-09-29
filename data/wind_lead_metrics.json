@@ -1,0 +1,40 @@
+{
+  "data_mode": "historical_replay",
+  "variable": "10m_wind_speed",
+  "unit": "m/s",
+  "metric_note": "Lower RMSE is better. Skill gain is measured against the best individual source for each lead time.",
+  "lead_results": [
+    {
+      "lead_hours": 24,
+      "best_individual_model": "Pangu",
+      "best_individual_rmse": 1.7808811668438247,
+      "hyblend_rmse": 0.8496173387013921,
+      "skill_gain_vs_best_pct": 52.292305937114804,
+      "fallback_recommended": false
+    },
+    {
+      "lead_hours": 72,
+      "best_individual_model": "Pangu",
+      "best_individual_rmse": 1.7793888830839355,
+      "hyblend_rmse": 0.8441865728884805,
+      "skill_gain_vs_best_pct": 52.55749988583809,
+      "fallback_recommended": false
+    },
+    {
+      "lead_hours": 120,
+      "best_individual_model": "Pangu",
+      "best_individual_rmse": 1.805687160603329,
+      "hyblend_rmse": 0.838963881297495,
+      "skill_gain_vs_best_pct": 53.53769470138037,
+      "fallback_recommended": false
+    },
+    {
+      "lead_hours": 168,
+      "best_individual_model": "Pangu",
+      "best_individual_rmse": 1.7700810175165202,
+      "hyblend_rmse": 0.8507184303072101,
+      "skill_gain_vs_best_pct": 51.93901172383653,
+      "fallback_recommended": false
+    }
+  ]
+}

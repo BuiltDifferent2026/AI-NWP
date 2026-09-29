@@ -1,0 +1,79 @@
+{
+  "data_mode": "historical_replay",
+  "variable": "2m_temperature",
+  "unit": "celsius",
+  "sources": [
+    {
+      "id": "hres",
+      "label": "IFS HRES",
+      "type": "physical_nwp",
+      "status": "public_proxy_evaluated"
+    },
+    {
+      "id": "pangu",
+      "label": "Pangu-Weather",
+      "type": "ai_weather_model",
+      "status": "public_proxy_evaluated"
+    },
+    {
+      "id": "ens",
+      "label": "IFS ENS Mean",
+      "type": "ensemble_nwp",
+      "status": "public_proxy_evaluated"
+    }
+  ],
+  "evaluation": {
+    "train_period": "2018-2019",
+    "validation_period": "2020",
+    "test_period": "2021",
+    "grid": "WeatherBench 2 64x32 India-focused subset",
+    "lead_hours": [
+      24,
+      72,
+      120,
+      168
+    ],
+    "truth_source": "ERA5 reanalysis",
+    "selected_beta": 3.0
+  },
+  "metrics": {
+    "HyBlend Adaptive": {
+      "MAE": 0.5881400108337402,
+      "RMSE": 0.8566540479660034,
+      "Bias": -0.1999109983444214
+    },
+    "Pangu": {
+      "MAE": 0.6334355473518372,
+      "RMSE": 0.9470110535621643,
+      "Bias": -0.1749468594789505
+    },
+    "Equal Weight": {
+      "MAE": 0.8259884715080261,
+      "RMSE": 1.1098781824111938,
+      "Bias": -0.48300492763519287
+    },
+    "IFS ENS Mean": {
+      "MAE": 1.0627180337905884,
+      "RMSE": 1.3959107398986816,
+      "Bias": -0.7790013551712036
+    },
+    "HRES": {
+      "MAE": 1.0554496049880981,
+      "RMSE": 1.4396733045578003,
+      "Bias": -0.49506670236587524
+    }
+  },
+  "hyblend_skill_gain_vs_best_individual_pct": 9.541283098680287,
+  "best_individual_model": "Pangu",
+  "issued_policy_metrics": {
+    "MAE": 0.5842183232307434,
+    "RMSE": 0.8548529148101807,
+    "Bias": -0.18667778372764587
+  },
+  "bootstrap_skill_gain_95ci": {
+    "original_gain_pct": 9.541276912931096,
+    "ci_lower_95": 8.28198015094326,
+    "ci_upper_95": 10.768848782986796,
+    "bootstrap_std": 0.6303089522038678
+  }
+}

@@ -21,5 +21,12 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
 ChatGPT*.png
+
+# Python virtual environment & cache
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/

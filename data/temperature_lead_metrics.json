@@ -1,0 +1,148 @@
+{
+  "data_mode": "historical_replay",
+  "variable": "2m_temperature",
+  "unit": "celsius",
+  "metric_note": "Lower RMSE is better. Skill gain is measured against the best individual source for each lead time.",
+  "lead_results": [
+    {
+      "lead_hours": 24,
+      "best_individual_model": "Pangu",
+      "best_individual_rmse": 0.499867707490921,
+      "hyblend_rmse": 0.5055744647979736,
+      "skill_gain_vs_best_pct": -1.141653525829378,
+      "fallback_recommended": true,
+      "methods": {
+        "HRES": {
+          "mae": 1.0085135698318481,
+          "rmse": 1.3643006086349487,
+          "bias": -0.5693576335906982
+        },
+        "Pangu": {
+          "mae": 0.34321707487106323,
+          "rmse": 0.499867707490921,
+          "bias": 0.002797112101688981
+        },
+        "IFS ENS Mean": {
+          "mae": 1.0110417604446411,
+          "rmse": 1.3133411407470703,
+          "bias": -0.8069804310798645
+        },
+        "Equal Weight": {
+          "mae": 0.7023797631263733,
+          "rmse": 0.932849109172821,
+          "bias": -0.4578470289707184
+        },
+        "HyBlend Adaptive": {
+          "mae": 0.3519955277442932,
+          "rmse": 0.5055744647979736,
+          "bias": -0.06577562540769577
+        }
+      }
+    },
+    {
+      "lead_hours": 72,
+      "best_individual_model": "Pangu",
+      "best_individual_rmse": 0.7719655632972717,
+      "hyblend_rmse": 0.739530086517334,
+      "skill_gain_vs_best_pct": 4.201674054137483,
+      "fallback_recommended": false,
+      "methods": {
+        "HRES": {
+          "mae": 1.0266292095184326,
+          "rmse": 1.3909186124801636,
+          "bias": -0.5220634341239929
+        },
+        "Pangu": {
+          "mae": 0.5410327315330505,
+          "rmse": 0.7719655632972717,
+          "bias": -0.12863802909851074
+        },
+        "IFS ENS Mean": {
+          "mae": 1.043821096420288,
+          "rmse": 1.3608641624450684,
+          "bias": -0.8110114336013794
+        },
+        "Equal Weight": {
+          "mae": 0.7864016890525818,
+          "rmse": 1.0424503087997437,
+          "bias": -0.4872376024723053
+        },
+        "HyBlend Adaptive": {
+          "mae": 0.529862105846405,
+          "rmse": 0.739530086517334,
+          "bias": -0.1878678798675537
+        }
+      }
+    },
+    {
+      "lead_hours": 120,
+      "best_individual_model": "Pangu",
+      "best_individual_rmse": 1.0159146785736084,
+      "hyblend_rmse": 0.9225485920906067,
+      "skill_gain_vs_best_pct": 9.190347226215101,
+      "fallback_recommended": false,
+      "methods": {
+        "HRES": {
+          "mae": 1.0628668069839478,
+          "rmse": 1.447999119758606,
+          "bias": -0.4648659825325012
+        },
+        "Pangu": {
+          "mae": 0.7243079543113708,
+          "rmse": 1.0159146785736084,
+          "bias": -0.24075238406658173
+        },
+        "IFS ENS Mean": {
+          "mae": 1.0776783227920532,
+          "rmse": 1.4161564111709595,
+          "bias": -0.768693208694458
+        },
+        "Equal Weight": {
+          "mae": 0.8634063005447388,
+          "rmse": 1.1506246328353882,
+          "bias": -0.491437166929245
+        },
+        "HyBlend Adaptive": {
+          "mae": 0.6649132370948792,
+          "rmse": 0.9225485920906067,
+          "bias": -0.2522655129432678
+        }
+      }
+    },
+    {
+      "lead_hours": 168,
+      "best_individual_model": "Pangu",
+      "best_individual_rmse": 1.312588095664978,
+      "hyblend_rmse": 1.1363396644592285,
+      "skill_gain_vs_best_pct": 13.427550637388585,
+      "fallback_recommended": false,
+      "methods": {
+        "HRES": {
+          "mae": 1.1248557567596436,
+          "rmse": 1.5501338243484497,
+          "bias": -0.42260169982910156
+        },
+        "Pangu": {
+          "mae": 0.9305731058120728,
+          "rmse": 1.312588095664978,
+          "bias": -0.3363229036331177
+        },
+        "IFS ENS Mean": {
+          "mae": 1.119325041770935,
+          "rmse": 1.4887787103652954,
+          "bias": -0.7285511493682861
+        },
+        "Equal Weight": {
+          "mae": 0.9540711045265198,
+          "rmse": 1.2859389781951904,
+          "bias": -0.49582529067993164
+        },
+        "HyBlend Adaptive": {
+          "mae": 0.8099688291549683,
+          "rmse": 1.1363396644592285,
+          "bias": -0.2958250939846039
+        }
+      }
+    }
+  ]
+}

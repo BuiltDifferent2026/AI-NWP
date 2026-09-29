@@ -1,0 +1,51 @@
+{
+  "project": "HyBlend",
+  "variable": "10m_wind_speed",
+  "unit": "m/s",
+  "forecast_sources": [
+    "HRES",
+    "Pangu-Weather",
+    "IFS ENS Mean"
+  ],
+  "train_period": "2018-01-01 to 2019-12-31",
+  "validation_period": "2020-01-01 to 2020-12-31",
+  "test_period": "2021-01-01 to 2021-12-31",
+  "leads_hours": [
+    24,
+    72,
+    120,
+    168
+  ],
+  "gate_method": "LightGBM source-specific future absolute error prediction with softmax weighting",
+  "feature_columns": [
+    "lead_hours",
+    "latitude",
+    "longitude",
+    "hres",
+    "pangu",
+    "ens",
+    "hres_skill_mae",
+    "pangu_skill_mae",
+    "ens_skill_mae",
+    "hres_skill_bias",
+    "pangu_skill_bias",
+    "ens_skill_bias",
+    "hres_skill_n",
+    "pangu_skill_n",
+    "ens_skill_n",
+    "month_sin",
+    "month_cos",
+    "forecast_mean",
+    "forecast_std",
+    "forecast_range",
+    "truth_minus_mean",
+    "region_zone",
+    "regime"
+  ],
+  "categorical_features": [
+    "region_zone",
+    "regime"
+  ],
+  "data_mode": "historical_replay",
+  "ncmrwf_operational_data_access": false
+}
