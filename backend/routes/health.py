@@ -11,7 +11,7 @@ def get_health():
 
     return {
         "status": "healthy",
-        "service": "HyBlend NWP/AI Forecast Blending Engine",
+        "service": "VayuSangam NWP/AI Forecast Blending Engine",
         "version": "1.0.0",
         "models_status": {
             "temperature_error_gates": temp_loaded,

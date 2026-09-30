@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  Play, 
-  Sparkles, 
-  Sliders, 
-  CheckCircle2, 
-  AlertTriangle, 
-  HelpCircle, 
+import {
+  Play,
+  Sparkles,
+  Sliders,
+  CheckCircle2,
+  AlertTriangle,
+  HelpCircle,
   RotateCcw,
   Zap,
   ArrowRight,
@@ -225,10 +225,10 @@ export const LiveBlendingSimulator: React.FC = () => {
             <span style={{ fontWeight: 800, fontSize: '1.02rem', color: 'var(--color-ink)' }}>
               Live Meta-Model Inference Sandbox
             </span>
-            <span style={{ 
-              fontSize: '0.68rem', 
-              padding: '2px 8px', 
-              borderRadius: '12px', 
+            <span style={{
+              fontSize: '0.68rem',
+              padding: '2px 8px',
+              borderRadius: '12px',
               fontWeight: 700,
               background: backendOnline ? '#DCFCE7' : '#FEF3C7',
               color: backendOnline ? '#15803D' : '#B45309'
@@ -486,7 +486,7 @@ export const LiveBlendingSimulator: React.FC = () => {
                 <div style={{ background: '#EFF6FF', border: '1px solid #BFDBFE', borderRadius: '6px', padding: '0.85rem', marginBottom: '0.85rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ fontSize: '0.72rem', color: '#1E40AF', fontWeight: 700, textTransform: 'uppercase' }}>
-                      HYBLEND ISSUED FORECAST:
+                      VayuSangam ISSUED FORECAST:
                     </div>
                     {result.confidence && (
                       <span style={{ fontSize: '0.7rem', padding: '2px 6px', background: '#DBEAFE', color: '#1E40AF', borderRadius: '4px', fontWeight: 600 }}>
@@ -569,7 +569,7 @@ export const LiveBlendingSimulator: React.FC = () => {
                       <strong>{result.hres_input_mm || hresVal} mm</strong>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-                      <span style={{ color: 'var(--color-muted)' }}>Calibrated HyBlend Consensus:</span>
+                      <span style={{ color: 'var(--color-muted)' }}>Calibrated VayuSangam Consensus:</span>
                       <strong style={{ color: '#0B3D62' }}>{result.issued_value ?? result.blended_value} mm</strong>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>

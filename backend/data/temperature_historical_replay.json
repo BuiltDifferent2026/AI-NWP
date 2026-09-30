@@ -1,6 +1,6 @@
 {
   "data_mode": "historical_replay",
-  "title": "HyBlend Temperature Historical Replay",
+  "title": "VayuSangam Temperature Historical Replay",
   "context": {
     "valid_time": "2021-01-15 00:00:00",
     "init_time": "2021-01-10 00:00:00",
@@ -28,7 +28,7 @@
       "value": -15.12939453125,
       "weight": 0.5419240417792761
     },
-    "hyblend": {
+    "VayuSangam": {
       "value": -16.41109275817871,
       "selected": true
     }

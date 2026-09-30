@@ -4,8 +4,8 @@ export interface StratumPerformance {
   leadTime: string;
   variable: string;
   metricLabel: string;
-  hyBlendError: number;
-  hyBlendCi: [number, number];
+  VayuSangamError: number;
+  VayuSangamCi: [number, number];
   bestSingleModelId: string;
   bestSingleModelName: string;
   bestSingleModelError: number;
@@ -75,34 +75,34 @@ export const NATIONAL_STRATUM_SUMMARY = {
   windSkillGain: 52.59,
   windCi: [52.19, 52.98] as [number, number],
   leadTimeBreakdown: [
-    { 
-      leadTime: 'Day 1 (T+24h)', 
-      hyBlendGain: -1.14, 
-      ci: [-2.45, 0.18] as [number, number], 
+    {
+      leadTime: 'Day 1 (T+24h)',
+      VayuSangamGain: -1.14,
+      ci: [-2.45, 0.18] as [number, number],
       sampleCount: 1826,
       fallbackEngaged: true,
       note: 'Honest Fallback to Pangu-Weather active (RMSE 0.4999 vs 0.5056)'
     },
-    { 
-      leadTime: 'Day 3 (T+72h)', 
-      hyBlendGain: 4.20, 
-      ci: [2.76, 5.56] as [number, number], 
+    {
+      leadTime: 'Day 3 (T+72h)',
+      VayuSangamGain: 4.20,
+      ci: [2.76, 5.56] as [number, number],
       sampleCount: 1826,
       fallbackEngaged: false,
       note: 'Statistically significant improvement over Pangu (RMSE 0.8352 vs 0.8718)'
     },
-    { 
-      leadTime: 'Day 5 (T+120h)', 
-      hyBlendGain: 9.19, 
-      ci: [7.82, 10.59] as [number, number], 
+    {
+      leadTime: 'Day 5 (T+120h)',
+      VayuSangamGain: 9.19,
+      ci: [7.82, 10.59] as [number, number],
       sampleCount: 1826,
       fallbackEngaged: false,
       note: 'Robust gating superiority as NWP and AI error structures diverge (RMSE 1.0481 vs 1.1542)'
     },
-    { 
-      leadTime: 'Day 7 (T+168h)', 
-      hyBlendGain: 13.43, 
-      ci: [11.89, 14.86] as [number, number], 
+    {
+      leadTime: 'Day 7 (T+168h)',
+      VayuSangamGain: 13.43,
+      ci: [11.89, 14.86] as [number, number],
       sampleCount: 1826,
       fallbackEngaged: false,
       note: 'Maximum skill divergence at medium range over single AI baseline (RMSE 1.2874 vs 1.4871)'
@@ -110,7 +110,7 @@ export const NATIONAL_STRATUM_SUMMARY = {
   ],
   methodologyComparison: [
     {
-      methodName: 'HyBlend (Layer 2 LightGBM Gate)',
+      methodName: 'VayuSangam (Layer 2 LightGBM Gate)',
       meanRMSE_Temp: 0.857,
       ciRMSE_Temp: [0.841, 0.873] as [number, number],
       meanRMSE_Wind: 0.846,

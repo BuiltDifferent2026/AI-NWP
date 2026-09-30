@@ -1,14 +1,14 @@
 import React from 'react';
 import { UPSTREAM_MODELS } from '../data/models';
-import { 
-  Layers, 
-  GitCommit, 
-  Database, 
-  Cpu, 
-  ArrowRight, 
-  ShieldCheck, 
-  CheckCircle2, 
-  Target, 
+import {
+  Layers,
+  GitCommit,
+  Database,
+  Cpu,
+  ArrowRight,
+  ShieldCheck,
+  CheckCircle2,
+  Target,
   HelpCircle,
   BookOpen
 } from 'lucide-react';
@@ -37,7 +37,7 @@ export const PageMethodology: React.FC = () => {
           System Methodology &amp; Scientific Architecture
         </h1>
         <p style={{ fontSize: '0.9rem', color: 'var(--color-muted)', maxWidth: '85ch' }}>
-          HyBlend is a decision-support and adaptive gating engine built for MoES / NCMRWF. It answers the fundamental operational question: <em>"Which model should we trust — for this place, this lead time, this weather situation — and what evidence supports that decision?"</em>
+          VayuSangam is a decision-support and adaptive gating engine built for MoES / NCMRWF. It answers the fundamental operational question: <em>"Which model should we trust — for this place, this lead time, this weather situation — and what evidence supports that decision?"</em>
         </p>
       </div>
 
@@ -47,7 +47,7 @@ export const PageMethodology: React.FC = () => {
           The Model Progression Ladder
         </h2>
         <p style={{ fontSize: '0.8rem', color: 'var(--color-muted)', marginBottom: '1.25rem' }}>
-          HyBlend validates its performance against four explicit progression tiers to guarantee that increased model complexity yields statistically verified skill gain:
+          VayuSangam validates its performance against four explicit progression tiers to guarantee that increased model complexity yields statistically verified skill gain:
         </p>
 
         <div className="responsive-grid-4">
@@ -174,7 +174,7 @@ export const PageMethodology: React.FC = () => {
           Upstream Model Ingestion Roster
         </h2>
         <p style={{ fontSize: '0.8rem', color: 'var(--color-muted)', marginBottom: '1rem' }}>
-          HyBlend operates on standardized ingestion adapters across three major computational paradigms. These are <strong>existing upstream forecast sources we ingest</strong> — not models created from scratch:
+          VayuSangam operates on standardized ingestion adapters across three major computational paradigms. These are <strong>existing upstream forecast sources we ingest</strong> — not models created from scratch:
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>

@@ -1,4 +1,4 @@
-# HyBlend — Regime-Aware Multi-Model Forecast Blending System
+# VayuSangam — Regime-Aware Multi-Model Forecast Blending System
 ### Ministry of Earth Sciences (MoES) / NCMRWF, Government of India
 **Smart India Hackathon 2026 | Problem Statement: SIH26081 | Theme: Disaster Management**
 
@@ -7,13 +7,13 @@
 ## 🌟 Executive Summary & One-Line Positioning
 > *"Which model should we trust — for this place, this lead time, this weather situation — and what evidence supports that decision?"*
 
-**HyBlend** is a decision-support and adaptive gating engine built for the **National Centre for Medium Range Weather Forecasting (NCMRWF)** and the **Ministry of Earth Sciences (MoES)**. It dynamically combines physical numerical weather prediction (NWP) models, high-resolution regional ensembles, and AI foundation models into a unified, reliable, and calibrated consensus forecast.
+**VayuSangam** is a decision-support and adaptive gating engine built for the **National Centre for Medium Range Weather Forecasting (NCMRWF)** and the **Ministry of Earth Sciences (MoES)**. It dynamically combines physical numerical weather prediction (NWP) models, high-resolution regional ensembles, and AI foundation models into a unified, reliable, and calibrated consensus forecast.
 
 ---
 
 ## 🏛️ Upstream Model Ingestion Roster
 
-HyBlend ingests and benchmarks existing upstream forecasts across four computational categories:
+VayuSangam ingests and benchmarks existing upstream forecasts across four computational categories:
 
 - **Physical NWP**:
   - `NCMRWF Mithuna-FS`: 12 km operational South Asian monsoon dynamical core (NCUM-G lineage).

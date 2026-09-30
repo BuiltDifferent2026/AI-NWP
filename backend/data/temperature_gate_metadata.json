@@ -1,5 +1,5 @@
 {
-  "project": "HyBlend",
+  "project": "VayuSangam",
   "variable": "2m_temperature",
   "unit": "celsius",
   "forecast_sources": [
@@ -55,6 +55,6 @@
   "test_rows": 86640,
   "selected_beta": 3.0,
   "test_best_individual": "Pangu",
-  "test_hyblend_rmse": 0.8566540479660034,
+  "test_VayuSangam_rmse": 0.8566540479660034,
   "test_skill_gain_pct": 9.541283098680287
 }

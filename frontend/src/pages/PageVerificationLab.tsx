@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useForecast } from '../context/ForecastContext';
-import { 
-  BarChart3, 
-  TrendingUp, 
-  Download, 
-  CheckCircle2, 
-  Layers, 
-  FileText, 
+import {
+  BarChart3,
+  TrendingUp,
+  Download,
+  CheckCircle2,
+  Layers,
+  FileText,
   Activity,
   Sliders,
   HelpCircle,
@@ -44,9 +44,9 @@ export const PageVerificationLab: React.FC = () => {
     pangu_mae: tempRaw?.pangu_mae ?? tempM?.["Pangu"]?.MAE ?? 0.6334,
     equal_weight_rmse: tempRaw?.equal_weight_rmse ?? tempM?.["Equal Weight"]?.RMSE ?? 1.1099,
     equal_weight_mae: tempRaw?.equal_weight_mae ?? tempM?.["Equal Weight"]?.MAE ?? 0.8260,
-    hyblend_rmse: tempRaw?.hyblend_rmse ?? tempM?.["HyBlend Adaptive"]?.RMSE ?? 0.8567,
-    hyblend_mae: tempRaw?.hyblend_mae ?? tempM?.["HyBlend Adaptive"]?.MAE ?? 0.5881,
-    skill_gain_vs_best_pct: tempRaw?.skill_gain_vs_best_pct ?? tempRaw?.hyblend_skill_gain_vs_best_individual_pct ?? 9.54,
+    VayuSangam_rmse: tempRaw?.VayuSangam_rmse ?? tempM?.["VayuSangam Adaptive"]?.RMSE ?? 0.8567,
+    VayuSangam_mae: tempRaw?.VayuSangam_mae ?? tempM?.["VayuSangam Adaptive"]?.MAE ?? 0.5881,
+    skill_gain_vs_best_pct: tempRaw?.skill_gain_vs_best_pct ?? tempRaw?.VayuSangam_skill_gain_vs_best_individual_pct ?? 9.54,
     bootstrap_ci_skill_gain_pct: tempRaw?.bootstrap_ci_skill_gain_pct ?? [
       tempRaw?.bootstrap_skill_gain_95ci?.ci_lower_95 ?? 8.28,
       tempRaw?.bootstrap_skill_gain_95ci?.ci_upper_95 ?? 10.77
@@ -64,9 +64,9 @@ export const PageVerificationLab: React.FC = () => {
     pangu_mae: windRaw?.pangu_mae ?? windM?.["Pangu"]?.MAE ?? 1.4257,
     equal_weight_rmse: windRaw?.equal_weight_rmse ?? windM?.["Equal Weight"]?.RMSE ?? 1.4153,
     equal_weight_mae: windRaw?.equal_weight_mae ?? windM?.["Equal Weight"]?.MAE ?? 1.1281,
-    hyblend_rmse: windRaw?.hyblend_rmse ?? windM?.["HyBlend Adaptive"]?.RMSE ?? 0.8459,
-    hyblend_mae: windRaw?.hyblend_mae ?? windM?.["HyBlend Adaptive"]?.MAE ?? 0.5865,
-    skill_gain_vs_best_pct: windRaw?.skill_gain_vs_best_pct ?? windRaw?.hyblend_skill_gain_vs_best_individual_pct ?? 52.59,
+    VayuSangam_rmse: windRaw?.VayuSangam_rmse ?? windM?.["VayuSangam Adaptive"]?.RMSE ?? 0.8459,
+    VayuSangam_mae: windRaw?.VayuSangam_mae ?? windM?.["VayuSangam Adaptive"]?.MAE ?? 0.5865,
+    skill_gain_vs_best_pct: windRaw?.skill_gain_vs_best_pct ?? windRaw?.VayuSangam_skill_gain_vs_best_individual_pct ?? 52.59,
     bootstrap_ci_skill_gain_pct: windRaw?.bootstrap_ci_skill_gain_pct ?? [
       windRaw?.bootstrap_skill_gain_95ci?.ci_lower_95 ?? 52.19,
       windRaw?.bootstrap_skill_gain_95ci?.ci_upper_95 ?? 52.98
@@ -78,14 +78,14 @@ export const PageVerificationLab: React.FC = () => {
   // Real download trigger generating CSV benchmark report
   const handleDownloadReport = () => {
     const csvRows = [
-      `HYBLEND EMPIRICAL VERIFICATION & BENCHMARK REPORT`,
+      `VayuSangam EMPIRICAL VERIFICATION & BENCHMARK REPORT`,
       `Ministry of Earth Sciences (MoES) / NCMRWF, Government of India`,
       `Smart India Hackathon 2026 - Problem Statement: SIH26081`,
       `Generated on,${new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}`,
       ``,
       `TABLE 1: 2m TEMPERATURE OVERALL BENCHMARK (Held-out Test Period 2021)`,
       `Model Name,Model Category,RMSE (K),MAE (K),Bias (K),Skill vs Best (%),Bootstrap 95% CI Lower,Bootstrap 95% CI Upper`,
-      `HyBlend Softmax Error-Gate,Adaptive Meta-Model,0.8567,0.5881,-0.1999,+9.54%,+8.28%,+10.77%`,
+      `VayuSangam Softmax Error-Gate,Adaptive Meta-Model,0.8567,0.5881,-0.1999,+9.54%,+8.28%,+10.77%`,
       `Pangu-Weather (Huawei),AI Foundation,0.9470,0.6334,-0.1749,0.00% (Best Single),-,-`,
       `Equal-Weight Blend,Simple Average,1.1099,0.8260,-0.4830,-0.76%,-,-`,
       `IFS ENS Mean (50-member),Ensemble NWP,1.3959,1.0627,-0.7790,-15.76%,-,-`,
@@ -93,7 +93,7 @@ export const PageVerificationLab: React.FC = () => {
       ``,
       `TABLE 2: 10m WIND SPEED OVERALL BENCHMARK (Held-out Test Period 2021)`,
       `Model Name,Model Category,RMSE (m/s),MAE (m/s),Bias (m/s),Skill vs Best (%),Bootstrap 95% CI Lower,Bootstrap 95% CI Upper`,
-      `HyBlend Softmax Error-Gate,Adaptive Meta-Model,0.8459,0.5865,-0.0121,+52.59%,+52.19%,+52.98%`,
+      `VayuSangam Softmax Error-Gate,Adaptive Meta-Model,0.8459,0.5865,-0.0121,+52.59%,+52.19%,+52.98%`,
       `Pangu-Weather (Huawei),AI Foundation,1.7841,1.4257,-0.0023,0.00% (Best Single),-,-`,
       `Equal-Weight Blend,Simple Average,1.4153,1.1281,+0.0152,+20.67%,-,-`,
       `IFS ENS Mean (50-member),Ensemble NWP,2.0140,1.6113,+0.0199,-12.87%,-,-`,
@@ -101,25 +101,25 @@ export const PageVerificationLab: React.FC = () => {
       ``,
       `TABLE 3: 24h PRECIPITATION QUANTILE CALIBRATION (Held-out Test Period 2021)`,
       `Model Name,Model Category,RMSE (mm),MAE (mm),R² Score,Skill Gain vs Baseline`,
-      `HyBlend LightGBM Calibrator,Adaptive GBDT,0.2060,0.1030,0.9161,+30.10% Gain (Orographic Bias Corrected)`,
-      `Equal-Weight NWP/AI Blend,Simple Average,0.2640,0.1280,0.7840,-28.10% vs HyBlend`,
+      `VayuSangam LightGBM Calibrator,Adaptive GBDT,0.2060,0.1030,0.9161,+30.10% Gain (Orographic Bias Corrected)`,
+      `Equal-Weight NWP/AI Blend,Simple Average,0.2640,0.1280,0.7840,-28.10% vs VayuSangam`,
       `Raw IFS HRES Precipitation,Physical NWP,0.2950,0.1450,0.7120,Baseline (-43.20%)`,
       ``,
       `TABLE 4: LEAD TIME PROGRESSION (TEMPERATURE RMSE IN K)`,
-      `Lead Horizon,IFS HRES,IFS ENS Mean,Pangu AI,Equal-Weight,HyBlend Issued,Fallback Engaged?,Skill vs Best (%)`,
+      `Lead Horizon,IFS HRES,IFS ENS Mean,Pangu AI,Equal-Weight,VayuSangam Issued,Fallback Engaged?,Skill vs Best (%)`,
       `T+24h (Day 1),0.8260,0.6920,0.4999,0.5480,0.5000,YES (Honest Fallback to Pangu),0.00%`,
       `T+72h (Day 3),1.1890,1.0250,0.8718,0.8910,0.8352,NO,+4.20%`,
       `T+120h (Day 5),1.4580,1.2890,1.1542,1.1780,1.0481,NO,+9.19%`,
       `T+168h (Day 7),1.7820,1.5710,1.4871,1.5020,1.2874,NO,+13.43%`,
       ``,
-      `CONCLUSION: HyBlend demonstrates statistically significant skill gains across all extended horizons with strict fallback transparency at Day 1.`
+      `CONCLUSION: VayuSangam demonstrates statistically significant skill gains across all extended horizons with strict fallback transparency at Day 1.`
     ].join('\n');
 
     const blob = new Blob([csvRows], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', `HyBlend_Verification_Benchmark_Report_2026.csv`);
+    link.setAttribute('download', `VayuSangam_Verification_Benchmark_Report_2026.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -147,10 +147,10 @@ export const PageVerificationLab: React.FC = () => {
             type="button"
             className="btn-outline"
             onClick={handleDownloadReport}
-            style={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.4rem', 
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.4rem',
               background: downloadSuccess ? '#DCFCE7' : '#FFFFFF',
               borderColor: downloadSuccess ? '#16A34A' : 'var(--color-border)',
               color: downloadSuccess ? '#15803D' : 'var(--color-ink)',
@@ -163,7 +163,7 @@ export const PageVerificationLab: React.FC = () => {
           </button>
           {downloadSuccess && (
             <span style={{ fontSize: '0.68rem', color: '#15803D', fontWeight: 600 }}>
-              ✓ Saved HyBlend_Verification_Benchmark_Report_2026.csv
+              ✓ Saved VayuSangam_Verification_Benchmark_Report_2026.csv
             </span>
           )}
         </div>
@@ -226,7 +226,7 @@ export const PageVerificationLab: React.FC = () => {
                     </tr>
                     <tr className="highlight-blend" style={{ background: '#EFF6FF', borderLeft: '3px solid #2563EB' }}>
                       <td>
-                        <strong style={{ color: '#0B3D62' }}>HyBlend LightGBM Calibrator</strong>
+                        <strong style={{ color: '#0B3D62' }}>VayuSangam LightGBM Calibrator</strong>
                       </td>
                       <td>Adaptive GBDT</td>
                       <td><strong style={{ color: '#15803D' }}>0.2060 mm</strong></td>
@@ -266,11 +266,11 @@ export const PageVerificationLab: React.FC = () => {
                     </tr>
                     <tr className="highlight-blend" style={{ background: '#EFF6FF', borderLeft: '3px solid #2563EB' }}>
                       <td>
-                        <strong style={{ color: '#0B3D62' }}>HyBlend Softmax Error-Gate</strong>
+                        <strong style={{ color: '#0B3D62' }}>VayuSangam Softmax Error-Gate</strong>
                       </td>
                       <td>Adaptive Meta-Model</td>
-                      <td><strong style={{ color: '#15803D' }}>{currentTemp.hyblend_rmse.toFixed(4)} K</strong></td>
-                      <td><strong style={{ color: '#15803D' }}>{currentTemp.hyblend_mae.toFixed(4)} K</strong></td>
+                      <td><strong style={{ color: '#15803D' }}>{currentTemp.VayuSangam_rmse.toFixed(4)} K</strong></td>
+                      <td><strong style={{ color: '#15803D' }}>{currentTemp.VayuSangam_mae.toFixed(4)} K</strong></td>
                       <td>
                         <strong style={{ color: '#15803D' }}>
                           +{Number(currentTemp.skill_gain_vs_best_pct).toFixed(2)}% [{Number(currentTemp.bootstrap_ci_skill_gain_pct[0]).toFixed(2)}%, {Number(currentTemp.bootstrap_ci_skill_gain_pct[1]).toFixed(2)}%]
@@ -310,11 +310,11 @@ export const PageVerificationLab: React.FC = () => {
                     </tr>
                     <tr className="highlight-blend" style={{ background: '#EFF6FF', borderLeft: '3px solid #2563EB' }}>
                       <td>
-                        <strong style={{ color: '#0B3D62' }}>HyBlend Softmax Error-Gate</strong>
+                        <strong style={{ color: '#0B3D62' }}>VayuSangam Softmax Error-Gate</strong>
                       </td>
                       <td>Adaptive Meta-Model</td>
-                      <td><strong style={{ color: '#15803D' }}>{currentWind.hyblend_rmse.toFixed(4)} m/s</strong></td>
-                      <td><strong style={{ color: '#15803D' }}>{currentWind.hyblend_mae.toFixed(4)} m/s</strong></td>
+                      <td><strong style={{ color: '#15803D' }}>{currentWind.VayuSangam_rmse.toFixed(4)} m/s</strong></td>
+                      <td><strong style={{ color: '#15803D' }}>{currentWind.VayuSangam_mae.toFixed(4)} m/s</strong></td>
                       <td>
                         <strong style={{ color: '#15803D' }}>
                           +{Number(currentWind.skill_gain_vs_best_pct).toFixed(2)}% [{Number(currentWind.bootstrap_ci_skill_gain_pct[0]).toFixed(2)}%, {Number(currentWind.bootstrap_ci_skill_gain_pct[1]).toFixed(2)}%]
@@ -355,7 +355,7 @@ export const PageVerificationLab: React.FC = () => {
             {/* 1:1 Diagonal */}
             <line x1="35" y1="135" x2="340" y2="15" stroke="#94A3B8" strokeDasharray="3 3" />
 
-            {/* HyBlend curve */}
+            {/* VayuSangam curve */}
             <polyline points="35,135 96,112 157,88 218,62 279,38 340,18" fill="none" stroke="#2563EB" strokeWidth="2.5" />
             <circle cx="218" cy="62" r="3.5" fill="#2563EB" />
 
@@ -367,7 +367,7 @@ export const PageVerificationLab: React.FC = () => {
           </svg>
 
           <div style={{ display: 'flex', gap: '0.75rem', fontSize: '0.7rem', color: 'var(--color-muted)', marginTop: '4px' }}>
-            <span style={{ color: '#2563EB', fontWeight: 600 }}>● Hybrid Blend (HyBlend)</span>
+            <span style={{ color: '#2563EB', fontWeight: 600 }}>● Hybrid Blend (VayuSangam)</span>
             <span style={{ color: '#059669' }}>● NEPS</span>
             <span style={{ color: '#F59E0B' }}>● AIFS</span>
             <span>-- Perfect Reliability</span>
@@ -409,7 +409,7 @@ export const PageVerificationLab: React.FC = () => {
             <polyline points="60,102 170,74 280,54 380,32" fill="none" stroke="#D97706" strokeWidth="1.5" strokeDasharray="2 2" />
             {/* Pangu-Weather: 0.4999, 0.8718, 1.1542, 1.4871 */}
             <polyline points="60,113 170,84 280,63 380,38" fill="none" stroke="#9333EA" strokeWidth="1.7" />
-            {/* HyBlend: 0.5056 (Fallback to Pangu 0.500), 0.8352, 1.0481, 1.2874 */}
+            {/* VayuSangam: 0.5056 (Fallback to Pangu 0.500), 0.8352, 1.0481, 1.2874 */}
             <polyline points="60,112 170,87 280,72 380,52" fill="none" stroke="#2563EB" strokeWidth="2.5" />
             <circle cx="60" cy="112" r="3.5" fill="#EF4444" />
             <circle cx="170" cy="87" r="3.5" fill="#2563EB" />
@@ -418,14 +418,14 @@ export const PageVerificationLab: React.FC = () => {
           </svg>
 
           <div style={{ display: 'flex', gap: '0.75rem', fontSize: '0.72rem', color: 'var(--color-muted)', marginTop: '4px', flexWrap: 'wrap' }}>
-            <span style={{ color: '#2563EB', fontWeight: 600 }}>● HyBlend (Adaptive Gate)</span>
+            <span style={{ color: '#2563EB', fontWeight: 600 }}>● VayuSangam (Adaptive Gate)</span>
             <span style={{ color: '#9333EA', fontWeight: 500 }}>● Pangu (AI)</span>
             <span style={{ color: '#D97706', fontWeight: 500 }}>● ENS Mean (Ensemble)</span>
             <span style={{ color: '#64748B', fontWeight: 500 }}>● IFS HRES (Physical NWP)</span>
             <span style={{ color: '#EF4444', fontWeight: 600 }}>● Fallback Point (T+24h)</span>
           </div>
           <div style={{ marginTop: '0.5rem', padding: '0.4rem 0.6rem', background: '#FEF2F2', borderRadius: '4px', fontSize: '0.7rem', color: '#991B1B' }}>
-            <strong>Honest Evaluation Notice:</strong> At T+24h, Pangu single AI baseline achieves RMSE 0.4999 K vs unconstrained gate 0.5056 K (-1.14%). HyBlend governance flags non-significance and activates transparent fallback to Pangu. By T+168h, HyBlend leads with +13.43% skill gain.
+            <strong>Honest Evaluation Notice:</strong> At T+24h, Pangu single AI baseline achieves RMSE 0.4999 K vs unconstrained gate 0.5056 K (-1.14%). VayuSangam governance flags non-significance and activates transparent fallback to Pangu. By T+168h, VayuSangam leads with +13.43% skill gain.
           </div>
         </div>
 
@@ -440,7 +440,7 @@ export const PageVerificationLab: React.FC = () => {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.55rem', fontSize: '0.75rem' }}>
             {[
-              { label: 'Layer 2 LightGBM Adaptive Gate (HyBlend)', val: 0.857, tag: 'Best (+9.54% Skill Gain)', color: '#2563EB' },
+              { label: 'Layer 2 LightGBM Adaptive Gate (VayuSangam)', val: 0.857, tag: 'Best (+9.54% Skill Gain)', color: '#2563EB' },
               { label: 'Best Single Model Baseline (Pangu-Weather)', val: 0.947, tag: 'Single AI Baseline', color: '#9333EA' },
               { label: 'Simple Equal-Weight Average Baseline', val: 0.955, tag: '-0.76% vs Best', color: '#64748B' },
               { label: 'IFS ENS Mean (Ensemble NWP)', val: 1.097, tag: '-15.76% vs Best', color: '#D97706' },

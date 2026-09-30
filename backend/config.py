@@ -1,12 +1,29 @@
 import os
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-DATA_DIR = BASE_DIR / "data"
+# config.py lives at backend/config.py
+_BACKEND_DIR = Path(__file__).resolve().parent        # .../backend/
+_REPO_ROOT   = _BACKEND_DIR.parent                    # .../AI-NWP/
 
-# Verify DATA_DIR exists
+# Resolution priority:
+#   1. DATA_DIR env var (explicit override — useful for Docker / custom paths)
+#   2. backend/data/   (works when Render Root Directory = backend/)
+#   3. <repo_root>/data/ (works when Render Root Directory = repo root)
+_data_env = os.environ.get("DATA_DIR")
+if _data_env:
+    DATA_DIR = Path(_data_env).resolve()
+elif (_BACKEND_DIR / "data").exists():
+    DATA_DIR = _BACKEND_DIR / "data"   # backend/data/ — preferred for Render backend-root deploys
+else:
+    DATA_DIR = _REPO_ROOT / "data"     # repo-root/data/ — fallback for monorepo deploys
+
 if not DATA_DIR.exists():
-    raise RuntimeError(f"Data directory not found at: {DATA_DIR}")
+    raise RuntimeError(
+        f"Data directory not found. Tried:\n"
+        f"  1. DATA_DIR env var: {_data_env!r}\n"
+        f"  2. backend/data/: {_BACKEND_DIR / 'data'}\n"
+        f"  3. repo-root/data/: {_REPO_ROOT / 'data'}"
+    )
 
 # Model file paths
 RAINFALL_MODEL_PATH = DATA_DIR / "rainfall_model.pkl"

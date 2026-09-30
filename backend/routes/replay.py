@@ -7,7 +7,7 @@ router = APIRouter(prefix="/api/replay", tags=["replay"])
 def get_historical_cases():
     """
     Returns verified historical model duel cases comparing physical NWP,
-    AI weather model (Pangu-Weather), Ensemble mean, and the HyBlend result
+    AI weather model (Pangu-Weather), Ensemble mean, and the VayuSangam result
     against verified ground truth (ERA5).
     """
     temp_case = registry.get_temperature_historical_replay()
@@ -46,7 +46,7 @@ def get_historical_cases():
 @router.get("/timeseries")
 def get_rainfall_timeseries(limit: int = Query(60, ge=1, le=500)):
     """
-    Returns time series of verified actual vs HyBlend predicted rainfall.
+    Returns time series of verified actual vs VayuSangam predicted rainfall.
     """
     data = registry.get_rainfall_historical_replay(limit=limit)
     return {

@@ -19,7 +19,7 @@ export interface ExtremeThresholdTier {
 export interface ReliabilityPoint {
   binForecastProb: number; // 0.1, 0.2, ... 0.9
   observedFrequency: number; // 0.0 to 1.0
-  hyBlendFrequency: number;
+  VayuSangamFrequency: number;
   uncalibratedEnsembleFrequency: number;
   sampleCount: number;
 }
@@ -116,14 +116,14 @@ export const OTHER_EXTREME_TIERS: ExtremeThresholdTier[] = [
 ];
 
 export const RELIABILITY_DIAGRAM_DATA: ReliabilityPoint[] = [
-  { binForecastProb: 0.05, observedFrequency: 0.04, hyBlendFrequency: 0.05, uncalibratedEnsembleFrequency: 0.12, sampleCount: 1420 },
-  { binForecastProb: 0.15, observedFrequency: 0.14, hyBlendFrequency: 0.15, uncalibratedEnsembleFrequency: 0.26, sampleCount: 980 },
-  { binForecastProb: 0.25, observedFrequency: 0.23, hyBlendFrequency: 0.24, uncalibratedEnsembleFrequency: 0.39, sampleCount: 650 },
-  { binForecastProb: 0.35, observedFrequency: 0.34, hyBlendFrequency: 0.36, uncalibratedEnsembleFrequency: 0.52, sampleCount: 430 },
-  { binForecastProb: 0.45, observedFrequency: 0.46, hyBlendFrequency: 0.44, uncalibratedEnsembleFrequency: 0.63, sampleCount: 310 },
-  { binForecastProb: 0.55, observedFrequency: 0.54, hyBlendFrequency: 0.56, uncalibratedEnsembleFrequency: 0.74, sampleCount: 240 },
-  { binForecastProb: 0.65, observedFrequency: 0.66, hyBlendFrequency: 0.64, uncalibratedEnsembleFrequency: 0.82, sampleCount: 180 },
-  { binForecastProb: 0.75, observedFrequency: 0.73, hyBlendFrequency: 0.76, uncalibratedEnsembleFrequency: 0.89, sampleCount: 135 },
-  { binForecastProb: 0.85, observedFrequency: 0.86, hyBlendFrequency: 0.84, uncalibratedEnsembleFrequency: 0.94, sampleCount: 90 },
-  { binForecastProb: 0.95, observedFrequency: 0.93, hyBlendFrequency: 0.94, uncalibratedEnsembleFrequency: 0.98, sampleCount: 52 }
+  { binForecastProb: 0.05, observedFrequency: 0.04, VayuSangamFrequency: 0.05, uncalibratedEnsembleFrequency: 0.12, sampleCount: 1420 },
+  { binForecastProb: 0.15, observedFrequency: 0.14, VayuSangamFrequency: 0.15, uncalibratedEnsembleFrequency: 0.26, sampleCount: 980 },
+  { binForecastProb: 0.25, observedFrequency: 0.23, VayuSangamFrequency: 0.24, uncalibratedEnsembleFrequency: 0.39, sampleCount: 650 },
+  { binForecastProb: 0.35, observedFrequency: 0.34, VayuSangamFrequency: 0.36, uncalibratedEnsembleFrequency: 0.52, sampleCount: 430 },
+  { binForecastProb: 0.45, observedFrequency: 0.46, VayuSangamFrequency: 0.44, uncalibratedEnsembleFrequency: 0.63, sampleCount: 310 },
+  { binForecastProb: 0.55, observedFrequency: 0.54, VayuSangamFrequency: 0.56, uncalibratedEnsembleFrequency: 0.74, sampleCount: 240 },
+  { binForecastProb: 0.65, observedFrequency: 0.66, VayuSangamFrequency: 0.64, uncalibratedEnsembleFrequency: 0.82, sampleCount: 180 },
+  { binForecastProb: 0.75, observedFrequency: 0.73, VayuSangamFrequency: 0.76, uncalibratedEnsembleFrequency: 0.89, sampleCount: 135 },
+  { binForecastProb: 0.85, observedFrequency: 0.86, VayuSangamFrequency: 0.84, uncalibratedEnsembleFrequency: 0.94, sampleCount: 90 },
+  { binForecastProb: 0.95, observedFrequency: 0.93, VayuSangamFrequency: 0.94, uncalibratedEnsembleFrequency: 0.98, sampleCount: 52 }
 ];

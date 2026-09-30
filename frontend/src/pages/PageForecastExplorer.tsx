@@ -3,16 +3,16 @@ import { useForecast } from '../context/ForecastContext';
 import { IndiaMap } from '../components/IndiaMap';
 import { LiveBlendingSimulator } from '../components/LiveBlendingSimulator';
 import { UPSTREAM_MODELS } from '../data/models';
-import { 
-  Play, 
-  Pause, 
-  Layers, 
-  CloudRain, 
-  Thermometer, 
-  Wind, 
-  TrendingUp, 
-  CheckCircle2, 
-  Clock, 
+import {
+  Play,
+  Pause,
+  Layers,
+  CloudRain,
+  Thermometer,
+  Wind,
+  TrendingUp,
+  CheckCircle2,
+  Clock,
   Star,
   ExternalLink,
   Info,
@@ -29,23 +29,23 @@ import {
 } from 'lucide-react';
 
 export const PageForecastExplorer: React.FC = () => {
-  const { 
-    selectedSubdivision, 
-    leadTime, 
-    setLeadTime, 
-    variable, 
-    setVariable, 
-    timelineStepHours, 
+  const {
+    selectedSubdivision,
+    leadTime,
+    setLeadTime,
+    variable,
+    setVariable,
+    timelineStepHours,
     setTimelineStepHours,
     isPlayingTimeline,
     setIsPlayingTimeline,
-    navigateTo 
+    navigateTo
   } = useForecast();
 
   // Map display modes
   const [activeMapMode, setActiveMapMode] = useState<'blend' | 'weights' | 'agreement' | 'confidence'>('blend');
   const [selectedRosterModel, setSelectedRosterModel] = useState<string>('neps-r');
-  
+
   // Right panel tab
   const [rightPanelTab, setRightPanelTab] = useState<'point-forecast' | 'adaptive-weights' | 'attribution'>('point-forecast');
   const [pointVarTab, setPointVarTab] = useState<'rainfall' | 'temperature' | 'wind'>('rainfall');
@@ -144,24 +144,24 @@ export const PageForecastExplorer: React.FC = () => {
         confidence: hours <= 24 ? 'High Confidence (89%)' : hours <= 72 ? 'Medium Confidence (74%)' : 'Caution / High Spread (58%)',
         confidenceColor: hours <= 24 ? '#15803D' : hours <= 72 ? '#D97706' : '#DC2626',
         confidenceBg: hours <= 24 ? '#DCFCE7' : hours <= 72 ? '#FEF3C7' : '#FEE2E2',
-        weights: hours <= 24 
+        weights: hours <= 24
           ? [
-              { name: 'Pangu-Weather (AI)', pct: 38, color: '#9333EA' },
-              { name: 'IFS HRES (Physical 9km)', pct: 32, color: '#0284C7' },
-              { name: 'NEPS-R (NCMRWF 4km)', pct: 20, color: '#2563EB' },
-              { name: 'IFS ENS Mean', pct: 10, color: '#D97706' }
-            ]
+            { name: 'Pangu-Weather (AI)', pct: 38, color: '#9333EA' },
+            { name: 'IFS HRES (Physical 9km)', pct: 32, color: '#0284C7' },
+            { name: 'NEPS-R (NCMRWF 4km)', pct: 20, color: '#2563EB' },
+            { name: 'IFS ENS Mean', pct: 10, color: '#D97706' }
+          ]
           : hours <= 72
-          ? [
+            ? [
               { name: 'NEPS-R (NCMRWF 4km)', pct: 36, color: '#2563EB' },
               { name: 'NCUM-G (NCMRWF 12km)', pct: 28, color: '#059669' },
               { name: 'ECMWF IFS (9km)', pct: 18, color: '#0284C7' },
               { name: 'Pangu-Weather (AI)', pct: 10, color: '#9333EA' },
               { name: 'IFS ENS Mean', pct: 8, color: '#D97706' }
             ]
-          : [
+            : [
               { name: 'IFS ENS Mean (Ensemble)', pct: 36, color: '#D97706' },
-              { name: 'HyBlend GBDT Prior', pct: 26, color: '#2563EB' },
+              { name: 'VayuSangam GBDT Prior', pct: 26, color: '#2563EB' },
               { name: 'ECMWF IFS (9km)', pct: 20, color: '#0284C7' },
               { name: 'Pangu-Weather (AI)', pct: 18, color: '#9333EA' }
             ]
@@ -191,20 +191,20 @@ export const PageForecastExplorer: React.FC = () => {
         confidence: hours <= 24 ? 'High Confidence (92%)' : hours <= 72 ? 'Medium Confidence (82%)' : 'Caution / Spread (64%)',
         confidenceColor: hours <= 24 ? '#15803D' : hours <= 72 ? '#D97706' : '#DC2626',
         confidenceBg: hours <= 24 ? '#DCFCE7' : hours <= 72 ? '#FEF3C7' : '#FEE2E2',
-        weights: hours <= 24 
+        weights: hours <= 24
           ? [
-              { name: 'Pangu-Weather (AI Baseline)', pct: 44, color: '#9333EA' },
-              { name: 'IFS HRES (Physical NWP)', pct: 34, color: '#0284C7' },
-              { name: 'IFS ENS Mean', pct: 22, color: '#D97706' }
-            ]
+            { name: 'Pangu-Weather (AI Baseline)', pct: 44, color: '#9333EA' },
+            { name: 'IFS HRES (Physical NWP)', pct: 34, color: '#0284C7' },
+            { name: 'IFS ENS Mean', pct: 22, color: '#D97706' }
+          ]
           : hours <= 72
-          ? [
+            ? [
               { name: 'Pangu-Weather (AI)', pct: 40, color: '#9333EA' },
-              { name: 'HyBlend GBDT Gate', pct: 35, color: '#2563EB' },
+              { name: 'VayuSangam GBDT Gate', pct: 35, color: '#2563EB' },
               { name: 'IFS ENS Mean', pct: 25, color: '#D97706' }
             ]
-          : [
-              { name: 'HyBlend GBDT Gate', pct: 45, color: '#2563EB' },
+            : [
+              { name: 'VayuSangam GBDT Gate', pct: 45, color: '#2563EB' },
               { name: 'IFS ENS Mean', pct: 35, color: '#D97706' },
               { name: 'Pangu-Weather (AI)', pct: 20, color: '#9333EA' }
             ]
@@ -236,18 +236,18 @@ export const PageForecastExplorer: React.FC = () => {
         confidenceBg: hours <= 24 ? '#DCFCE7' : hours <= 72 ? '#FEF3C7' : '#FEE2E2',
         weights: hours <= 24
           ? [
-              { name: 'Pangu-Weather (AI)', pct: 46, color: '#9333EA' },
-              { name: 'IFS HRES (Physical)', pct: 32, color: '#0284C7' },
-              { name: 'IFS ENS Mean', pct: 22, color: '#D97706' }
-            ]
+            { name: 'Pangu-Weather (AI)', pct: 46, color: '#9333EA' },
+            { name: 'IFS HRES (Physical)', pct: 32, color: '#0284C7' },
+            { name: 'IFS ENS Mean', pct: 22, color: '#D97706' }
+          ]
           : hours <= 72
-          ? [
-              { name: 'HyBlend Softmax Gate', pct: 52, color: '#2563EB' },
+            ? [
+              { name: 'VayuSangam Softmax Gate', pct: 52, color: '#2563EB' },
               { name: 'Pangu-Weather (AI)', pct: 28, color: '#9333EA' },
               { name: 'IFS ENS Mean', pct: 20, color: '#D97706' }
             ]
-          : [
-              { name: 'HyBlend Softmax Gate', pct: 58, color: '#2563EB' },
+            : [
+              { name: 'VayuSangam Softmax Gate', pct: 58, color: '#2563EB' },
               { name: 'IFS ENS Mean', pct: 28, color: '#D97706' },
               { name: 'Pangu-Weather (AI)', pct: 14, color: '#9333EA' }
             ]
@@ -322,7 +322,7 @@ export const PageForecastExplorer: React.FC = () => {
           <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--color-ink)', marginRight: '0.25rem' }}>
             Map Layer:
           </span>
-          
+
           <button
             type="button"
             className={`pill-btn ${activeMapMode === 'blend' ? 'active' : ''}`}
@@ -535,17 +535,17 @@ export const PageForecastExplorer: React.FC = () => {
               type="button"
               onClick={handlePlayToggle}
               title={isPlayingTimeline ? 'Pause Forecast Simulation' : 'Play Forecast Simulation (+0h to +120h)'}
-              style={{ 
-                width: '34px', 
-                height: '34px', 
-                borderRadius: '50%', 
-                background: isPlayingTimeline ? '#DC2626' : '#2563EB', 
-                color: '#FFFFFF', 
-                border: 'none', 
-                cursor: 'pointer', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center', 
+              style={{
+                width: '34px',
+                height: '34px',
+                borderRadius: '50%',
+                background: isPlayingTimeline ? '#DC2626' : '#2563EB',
+                color: '#FFFFFF',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 flexShrink: 0,
                 boxShadow: isPlayingTimeline ? '0 0 12px rgba(220, 38, 38, 0.5)' : '0 2px 6px rgba(37, 99, 235, 0.4)',
                 transition: 'all 0.2s ease'
@@ -556,7 +556,7 @@ export const PageForecastExplorer: React.FC = () => {
 
             <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between', position: 'relative' }}>
               <div style={{ position: 'absolute', top: '50%', left: '0', right: '0', height: '3px', background: '#CBD5E1', zIndex: 1, transform: 'translateY(-50%)' }} />
-              
+
               {timelineSteps.map((step) => {
                 const isSelected = timelineStepHours === step.hours;
                 return (

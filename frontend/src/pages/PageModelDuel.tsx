@@ -7,7 +7,7 @@ import { CloudLightning, ShieldCheck, Info, CheckCircle2, History, Database } fr
 export const PageModelDuel: React.FC = () => {
   const { selectedDuelCaseId, setSelectedDuelCaseId } = useForecast();
 
-  const currentCase: HistoricalDuelCase = 
+  const currentCase: HistoricalDuelCase =
     HISTORICAL_DUEL_CASES.find(c => c.id === selectedDuelCaseId) || HISTORICAL_DUEL_CASES[0];
 
   // Colors & stroke styles for multi-model overlaid chart
@@ -82,10 +82,10 @@ export const PageModelDuel: React.FC = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <div>
             <h2 style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--color-ink)' }}>
-              Trajectory Comparison: Roster Models vs. HyBlend vs. Ground Truth
+              Trajectory Comparison: Roster Models vs. VayuSangam vs. Ground Truth
             </h2>
             <div style={{ fontSize: '0.75rem', color: 'var(--color-muted)' }}>
-              Solid bold line = HyBlend &bull; Solid black circles = Verified Actual Truth &bull; Dashed lines = Upstream Models
+              Solid bold line = VayuSangam &bull; Solid black circles = Verified Actual Truth &bull; Dashed lines = Upstream Models
             </div>
           </div>
           <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-primary)' }}>
@@ -105,7 +105,7 @@ export const PageModelDuel: React.FC = () => {
 
             {/* Y-Axis tick values mapped to case scale */}
             {(() => {
-              const maxVal = Math.max(...currentCase.dataSeries.map(d => Math.max(d.actualVerified, d.hyBlend, ...Object.values(d.models))));
+              const maxVal = Math.max(...currentCase.dataSeries.map(d => Math.max(d.actualVerified, d.VayuSangam, ...Object.values(d.models))));
               const step = maxVal / 4;
               return (
                 <>
@@ -132,7 +132,7 @@ export const PageModelDuel: React.FC = () => {
             {/* Render Upstream Models Lines */}
             {Object.keys(currentCase.dataSeries[0].models).map((modelId) => {
               const style = modelStrokeStyles[modelId] || { stroke: '#94A3B8', dash: '2 2', width: 1.5, name: modelId };
-              const maxVal = Math.max(...currentCase.dataSeries.map(d => Math.max(d.actualVerified, d.hyBlend, ...Object.values(d.models))));
+              const maxVal = Math.max(...currentCase.dataSeries.map(d => Math.max(d.actualVerified, d.VayuSangam, ...Object.values(d.models))));
               const xStep = 680 / (currentCase.dataSeries.length - 1 || 1);
 
               const points = currentCase.dataSeries.map((d, i) => {
@@ -155,13 +155,13 @@ export const PageModelDuel: React.FC = () => {
               );
             })}
 
-            {/* Render HyBlend Line (Solid Navy Blue #0B3D62, thick) */}
+            {/* Render VayuSangam Line (Solid Navy Blue #0B3D62, thick) */}
             {(() => {
-              const maxVal = Math.max(...currentCase.dataSeries.map(d => Math.max(d.actualVerified, d.hyBlend, ...Object.values(d.models))));
+              const maxVal = Math.max(...currentCase.dataSeries.map(d => Math.max(d.actualVerified, d.VayuSangam, ...Object.values(d.models))));
               const xStep = 680 / (currentCase.dataSeries.length - 1 || 1);
               const points = currentCase.dataSeries.map((d, i) => {
                 const x = 60 + i * xStep;
-                const y = 210 - (d.hyBlend / (maxVal * 1.05)) * 190;
+                const y = 210 - (d.VayuSangam / (maxVal * 1.05)) * 190;
                 return `${x},${y}`;
               }).join(' ');
 
@@ -177,7 +177,7 @@ export const PageModelDuel: React.FC = () => {
 
             {/* Render Verified Actual Truth (Solid Black Line + Circles) */}
             {(() => {
-              const maxVal = Math.max(...currentCase.dataSeries.map(d => Math.max(d.actualVerified, d.hyBlend, ...Object.values(d.models))));
+              const maxVal = Math.max(...currentCase.dataSeries.map(d => Math.max(d.actualVerified, d.VayuSangam, ...Object.values(d.models))));
               const xStep = 680 / (currentCase.dataSeries.length - 1 || 1);
               const points = currentCase.dataSeries.map((d, i) => {
                 const x = 60 + i * xStep;
@@ -213,7 +213,7 @@ export const PageModelDuel: React.FC = () => {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '0.75rem', fontSize: '0.75rem', borderTop: '1px solid var(--color-border-subtle)', paddingTop: '0.6rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
             <span style={{ width: '18px', height: '4px', backgroundColor: '#0B3D62', display: 'inline-block' }}></span>
-            <strong style={{ color: '#0B3D62' }}>HyBlend Gated Output</strong>
+            <strong style={{ color: '#0B3D62' }}>VayuSangam Gated Output</strong>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
             <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#1E293B', display: 'inline-block' }}></span>
@@ -257,9 +257,9 @@ export const PageModelDuel: React.FC = () => {
             </thead>
             <tbody>
               {currentCase.errorSummaries.map((row) => (
-                <tr key={row.modelId} className={row.isHyBlend ? 'highlight-blend' : ''}>
+                <tr key={row.modelId} className={row.isVayuSangam ? 'highlight-blend' : ''}>
                   <td>
-                    {row.isHyBlend ? (
+                    {row.isVayuSangam ? (
                       <span style={{ background: '#0B3D62', color: '#FFFFFF', padding: '0.15rem 0.45rem', borderRadius: '3px', fontSize: '0.72rem', fontWeight: 700 }}>
                         #1 Blend
                       </span>
@@ -279,7 +279,7 @@ export const PageModelDuel: React.FC = () => {
                     <td style={{ fontVariantNumeric: 'tabular-nums' }}>{row.crps?.toFixed(2) || '—'}</td>
                   )}
                   <td>
-                    {row.isHyBlend ? (
+                    {row.isVayuSangam ? (
                       <span style={{ color: '#15803D', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.75rem' }}>
                         <CheckCircle2 size={13} /> Lowest Verification Error
                       </span>

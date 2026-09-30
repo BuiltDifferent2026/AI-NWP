@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForecast } from '../context/ForecastContext';
-import { 
-  Database, 
-  Layers, 
-  Download, 
-  ExternalLink, 
-  CheckCircle2, 
+import {
+  Database,
+  Layers,
+  Download,
+  ExternalLink,
+  CheckCircle2,
   FileText
 } from 'lucide-react';
 
@@ -28,7 +28,7 @@ export const PageDataProducts: React.FC = () => {
         <button
           type="button"
           className="btn-outline"
-          onClick={() => alert('NCMRWF HyBlend Data Specification v1.4 loaded.')}
+          onClick={() => alert('NCMRWF VayuSangam Data Specification v1.4 loaded.')}
         >
           <FileText size={15} />
           <span>Documentation</span>
@@ -46,8 +46,8 @@ export const PageDataProducts: React.FC = () => {
           <div style={{ background: '#FFFFFF', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '0.75rem', fontSize: '0.75rem' }}>
             <div style={{ fontWeight: 700, color: '#0B3D62', marginBottom: '4px' }}>1. Data Sources</div>
             <div style={{ color: 'var(--color-muted)', fontSize: '0.7rem' }}>
-              &bull; NWP Models (NCUM, IFS, GFS)<br/>
-              &bull; AI Models (GraphCast, AIFS)<br/>
+              &bull; NWP Models (NCUM, IFS, GFS)<br />
+              &bull; AI Models (GraphCast, AIFS)<br />
               &bull; Obs (IMD AWS, INSAT)
             </div>
           </div>
@@ -56,8 +56,8 @@ export const PageDataProducts: React.FC = () => {
           <div style={{ background: '#FFFFFF', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '0.75rem', fontSize: '0.75rem' }}>
             <div style={{ fontWeight: 700, color: '#2563EB', marginBottom: '4px' }}>2. Pre-processing</div>
             <div style={{ color: 'var(--color-muted)', fontSize: '0.7rem' }}>
-              &bull; NetCDF4 / GRIB2 Decode<br/>
-              &bull; Physical Bounds Checking<br/>
+              &bull; NetCDF4 / GRIB2 Decode<br />
+              &bull; Physical Bounds Checking<br />
               &bull; Spatial Harmonization
             </div>
           </div>
@@ -66,8 +66,8 @@ export const PageDataProducts: React.FC = () => {
           <div style={{ background: '#FFFFFF', border: '1px solid var(--color-border)', borderRadius: '6px', padding: '0.75rem', fontSize: '0.75rem' }}>
             <div style={{ fontWeight: 700, color: '#7C3AED', marginBottom: '4px' }}>3. Integration Layer</div>
             <div style={{ color: 'var(--color-muted)', fontSize: '0.7rem' }}>
-              &bull; Common 0.25° Grid Alignment<br/>
-              &bull; Feature Store Generation<br/>
+              &bull; Common 0.25° Grid Alignment<br />
+              &bull; Feature Store Generation<br />
               &bull; Stratum Trailing Skill
             </div>
           </div>
@@ -76,8 +76,8 @@ export const PageDataProducts: React.FC = () => {
           <div style={{ background: '#EFF6FF', border: '2px solid #BFDBFE', borderRadius: '6px', padding: '0.75rem', fontSize: '0.75rem' }}>
             <div style={{ fontWeight: 700, color: '#1D4ED8', marginBottom: '4px' }}>4. Blending Engine</div>
             <div style={{ color: 'var(--color-ink)', fontSize: '0.7rem' }}>
-              &bull; LightGBM Gating Trees<br/>
-              &bull; Disagreement Weighting<br/>
+              &bull; LightGBM Gating Trees<br />
+              &bull; Disagreement Weighting<br />
               &bull; Brier Tail Calibration
             </div>
           </div>
@@ -86,8 +86,8 @@ export const PageDataProducts: React.FC = () => {
           <div style={{ background: '#F0FDF4', border: '1px solid #BBF7D0', borderRadius: '6px', padding: '0.75rem', fontSize: '0.75rem' }}>
             <div style={{ fontWeight: 700, color: '#15803D', marginBottom: '4px' }}>5. Dissemination</div>
             <div style={{ color: '#166534', fontSize: '0.7rem' }}>
-              &bull; Deterministic &amp; Prob Grids<br/>
-              &bull; NetCDF4 / Zarr Distribution<br/>
+              &bull; Deterministic &amp; Prob Grids<br />
+              &bull; NetCDF4 / Zarr Distribution<br />
               &bull; IMD Duty Dashboard
             </div>
           </div>

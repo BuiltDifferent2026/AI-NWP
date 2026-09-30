@@ -37,7 +37,7 @@
     "selected_beta": 2.0
   },
   "metrics": {
-    "HyBlend Adaptive": {
+    "VayuSangam Adaptive": {
       "MAE": 0.5864759313381495,
       "RMSE": 0.8458845715955213,
       "Bias": -0.012053342304965318
@@ -63,7 +63,7 @@
       "Bias": 0.02806389195567379
     }
   },
-  "hyblend_skill_gain_vs_best_individual_pct": 52.58649384051317,
+  "VayuSangam_skill_gain_vs_best_individual_pct": 52.58649384051317,
   "best_individual_model": "Pangu",
   "issued_policy_metrics": {
     "MAE": 0.5864759313381495,

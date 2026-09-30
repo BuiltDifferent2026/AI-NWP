@@ -12,7 +12,7 @@ export const PageExtremeEvents: React.FC = () => {
   return (
     <div className="extreme-events-page">
       {/* 1. Disclosure Banner (Always visible) */}
-      <div 
+      <div
         style={{
           background: '#FEF6EC',
           border: '1px solid #FCD8A5',
@@ -55,11 +55,11 @@ export const PageExtremeEvents: React.FC = () => {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {IMD_RAINFALL_TIERS.map((tier) => {
-            const prob = tier.id === 'heavy-rain' 
-              ? state.extremeRainProb.heavy 
-              : tier.id === 'very-heavy-rain' 
-              ? state.extremeRainProb.veryHeavy 
-              : state.extremeRainProb.extreme;
+            const prob = tier.id === 'heavy-rain'
+              ? state.extremeRainProb.heavy
+              : tier.id === 'very-heavy-rain'
+                ? state.extremeRainProb.veryHeavy
+                : state.extremeRainProb.extreme;
 
             return (
               <div
@@ -195,7 +195,7 @@ export const PageExtremeEvents: React.FC = () => {
                 strokeDasharray="3 3"
               />
 
-              {/* HyBlend Brier-Calibrated Curve (Solid Monsoon Blue) */}
+              {/* VayuSangam Brier-Calibrated Curve (Solid Monsoon Blue) */}
               <polyline
                 points="88,210 126,190 164,172 202,148 240,132 278,108 316,92 354,68 392,52 411,32"
                 fill="none"
@@ -206,7 +206,7 @@ export const PageExtremeEvents: React.FC = () => {
               {/* Calibration Points */}
               {RELIABILITY_DIAGRAM_DATA.map((pt, i) => {
                 const cx = 50 + pt.binForecastProb * 380;
-                const cy = 220 - pt.hyBlendFrequency * 200;
+                const cy = 220 - pt.VayuSangamFrequency * 200;
                 return (
                   <circle key={i} cx={cx} cy={cy} r="3.5" fill="#0B3D62" stroke="#FFFFFF" strokeWidth="1" />
                 );
@@ -217,7 +217,7 @@ export const PageExtremeEvents: React.FC = () => {
           <div style={{ display: 'flex', gap: '1.25rem', marginTop: '0.6rem', fontSize: '0.75rem', borderTop: '1px solid var(--color-border-subtle)', paddingTop: '0.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
               <span style={{ width: '14px', height: '3px', backgroundColor: '#0B3D62', display: 'inline-block' }}></span>
-              <strong>HyBlend Layer 3 Calibration</strong>
+              <strong>VayuSangam Layer 3 Calibration</strong>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem' }}>
               <span style={{ width: '14px', height: '2px', borderTop: '2px dashed #DC2626', display: 'inline-block' }}></span>
@@ -240,7 +240,7 @@ export const PageExtremeEvents: React.FC = () => {
               Raw numerical weather prediction ensembles routinely exhibit overconfidence in extreme precipitation events (e.g. issuing a 70% probability when empirical occurrence is only 30%).
             </p>
             <p style={{ fontSize: '0.8rem', color: 'var(--color-ink)', lineHeight: '1.45', marginBottom: '0.85rem' }}>
-              HyBlend’s Layer 3 separates threshold probability estimation from the mean forecast, fitting isotonic logistic regressions conditioned on regime descriptors.
+              VayuSangam’s Layer 3 separates threshold probability estimation from the mean forecast, fitting isotonic logistic regressions conditioned on regime descriptors.
             </p>
           </div>
 

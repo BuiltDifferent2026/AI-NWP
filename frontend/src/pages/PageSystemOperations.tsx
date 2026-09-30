@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  Server, 
-  Activity, 
-  Database, 
-  Cpu, 
-  CheckCircle2, 
-  AlertTriangle, 
-  ShieldCheck, 
-  RefreshCw, 
-  Clock, 
+import {
+  Server,
+  Activity,
+  Database,
+  Cpu,
+  CheckCircle2,
+  AlertTriangle,
+  ShieldCheck,
+  RefreshCw,
+  Clock,
   HardDrive,
   FileCode,
   Layers
@@ -24,7 +24,7 @@ export const PageSystemOperations: React.FC = () => {
       rainfall_calibrator: true,
     },
     version: '1.0.0',
-    service: 'HyBlend NWP/AI Forecast Blending Engine',
+    service: 'VayuSangam NWP/AI Forecast Blending Engine',
   });
   const [lastCheck, setLastCheck] = useState<string>(new Date().toLocaleTimeString());
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
@@ -50,7 +50,7 @@ export const PageSystemOperations: React.FC = () => {
             Operational Pipeline & Infrastructure Architecture
           </h1>
           <p style={{ fontSize: '0.825rem', color: 'var(--color-muted)' }}>
-            Live status of the HyBlend GBDT meta-model engine, data ingestion pipelines, and verification audit trails.
+            Live status of the VayuSangam GBDT meta-model engine, data ingestion pipelines, and verification audit trails.
           </p>
         </div>
 

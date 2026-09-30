@@ -2,7 +2,7 @@ export interface DuelDataPoint {
   leadTimeHours: number; // e.g. 12, 24, 36, 48, 60, 72
   timeLabel: string;
   actualVerified: number;
-  hyBlend: number;
+  VayuSangam: number;
   models: Record<string, number>;
 }
 
@@ -14,7 +14,7 @@ export interface ModelErrorSummary {
   bias: number;
   crps?: number;
   rank: number;
-  isHyBlend?: boolean;
+  isVayuSangam?: boolean;
 }
 
 export interface HistoricalDuelCase {
@@ -49,7 +49,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 12,
         timeLabel: 'T+12h (12 Jul 00Z)',
         actualVerified: 142.0,
-        hyBlend: 138.5,
+        VayuSangam: 138.5,
         models: {
           'mithuna-fs': 148.0,
           'neps-r': 144.0,
@@ -64,7 +64,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 24,
         timeLabel: 'T+24h (12 Jul 12Z)',
         actualVerified: 268.5,
-        hyBlend: 254.2,
+        VayuSangam: 254.2,
         models: {
           'mithuna-fs': 242.0,
           'neps-r': 260.0,
@@ -79,7 +79,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 36,
         timeLabel: 'T+36h (13 Jul 00Z)',
         actualVerified: 185.0,
-        hyBlend: 179.4,
+        VayuSangam: 179.4,
         models: {
           'mithuna-fs': 170.0,
           'neps-r': 188.0,
@@ -94,7 +94,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 48,
         timeLabel: 'T+48h (13 Jul 12Z)',
         actualVerified: 96.0,
-        hyBlend: 94.0,
+        VayuSangam: 94.0,
         models: {
           'mithuna-fs': 90.0,
           'neps-r': 102.0,
@@ -109,7 +109,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 60,
         timeLabel: 'T+60h (14 Jul 00Z)',
         actualVerified: 48.0,
-        hyBlend: 46.5,
+        VayuSangam: 46.5,
         models: {
           'mithuna-fs': 44.0,
           'neps-r': 52.0,
@@ -124,7 +124,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 72,
         timeLabel: 'T+72h (14 Jul 12Z)',
         actualVerified: 22.0,
-        hyBlend: 23.1,
+        VayuSangam: 23.1,
         models: {
           'mithuna-fs': 20.0,
           'neps-r': 26.0,
@@ -137,7 +137,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
       }
     ],
     errorSummaries: [
-      { modelId: 'hyblend', modelName: 'HyBlend (Layer 2 Gated)', rmse: 8.4, mae: 6.2, bias: -4.3, crps: 4.8, rank: 1, isHyBlend: true },
+      { modelId: 'VayuSangam', modelName: 'VayuSangam (Layer 2 Gated)', rmse: 8.4, mae: 6.2, bias: -4.3, crps: 4.8, rank: 1, isVayuSangam: true },
       { modelId: 'neps-r', modelName: 'NCMRWF NEPS-R (4km)', rmse: 11.2, mae: 8.5, bias: +2.1, crps: 6.9, rank: 2 },
       { modelId: 'mithuna-fs', modelName: 'NCMRWF Mithuna-FS', rmse: 16.8, mae: 13.4, bias: -12.2, crps: 9.4, rank: 3 },
       { modelId: 'ecmwf-ifs', modelName: 'ECMWF IFS/HRES', rmse: 31.5, mae: 26.2, bias: -28.4, crps: 18.2, rank: 4 },
@@ -157,13 +157,13 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
     variableUnit: '°C (Max Temp)',
     eventDescription: 'Severe persistent heatwave with intense dry continental advection reaching peak daily maximum of 47.4°C at Nagpur/Brahmapuri.',
     reproducibleHash: 'SHA256:3c81e9d1a55f89... (IMD Gridded 0.25° Tmax + AWS Nagpur Station ID:42867)',
-    keyInsight: 'AI models (GraphCast & Pangu-Weather) demonstrated superior thermodynamic propagation for synoptic temperature advection over physical NWP models, which suffered from boundary layer over-mixing and cool biases. HyBlend allocated 62% weight to AI models, cutting RMSE by 34%.',
+    keyInsight: 'AI models (GraphCast & Pangu-Weather) demonstrated superior thermodynamic propagation for synoptic temperature advection over physical NWP models, which suffered from boundary layer over-mixing and cool biases. VayuSangam allocated 62% weight to AI models, cutting RMSE by 34%.',
     dataSeries: [
       {
         leadTimeHours: 24,
         timeLabel: 'Day 1 (18 May)',
         actualVerified: 45.8,
-        hyBlend: 45.9,
+        VayuSangam: 45.9,
         models: {
           'graphcast': 45.9,
           'pangu-weather': 45.7,
@@ -178,7 +178,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 48,
         timeLabel: 'Day 2 (19 May - Peak)',
         actualVerified: 47.4,
-        hyBlend: 47.2,
+        VayuSangam: 47.2,
         models: {
           'graphcast': 47.3,
           'pangu-weather': 47.1,
@@ -193,7 +193,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 72,
         timeLabel: 'Day 3 (20 May)',
         actualVerified: 46.9,
-        hyBlend: 46.7,
+        VayuSangam: 46.7,
         models: {
           'graphcast': 46.8,
           'pangu-weather': 46.6,
@@ -208,7 +208,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 96,
         timeLabel: 'Day 4 (21 May)',
         actualVerified: 45.2,
-        hyBlend: 45.1,
+        VayuSangam: 45.1,
         models: {
           'graphcast': 45.0,
           'pangu-weather': 44.9,
@@ -221,7 +221,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
       }
     ],
     errorSummaries: [
-      { modelId: 'hyblend', modelName: 'HyBlend (Layer 2 Gated)', rmse: 0.18, mae: 0.15, bias: -0.12, rank: 1, isHyBlend: true },
+      { modelId: 'VayuSangam', modelName: 'VayuSangam (Layer 2 Gated)', rmse: 0.18, mae: 0.15, bias: -0.12, rank: 1, isVayuSangam: true },
       { modelId: 'graphcast', modelName: 'GraphCast (DeepMind)', rmse: 0.22, mae: 0.18, bias: -0.15, rank: 2 },
       { modelId: 'pangu-weather', modelName: 'Pangu-Weather (Huawei)', rmse: 0.29, mae: 0.25, bias: -0.25, rank: 3 },
       { modelId: 'ecmwf-aifs', modelName: 'ECMWF AIFS', rmse: 0.52, mae: 0.48, bias: -0.48, rank: 4 },
@@ -241,13 +241,13 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
     variableUnit: 'km/h (Sustained / Gusts)',
     eventDescription: 'Intense cyclonic storm making landfall near Bapatla with sustained winds of 90-100 km/h and gusts exceeding 115 km/h.',
     reproducibleHash: 'SHA256:91b7e408d62c11... (IMD Cyclone E-Atlas + AWS Nellore ID:43245)',
-    keyInsight: 'ECMWF IFS tracked the recurvature trajectory accurately, whereas GFS suffered from a right-of-track bias. HyBlend utilized the inter-model disagreement feature to dynamically down-weight divergent tracks, achieving lowest wind vector RMSE.',
+    keyInsight: 'ECMWF IFS tracked the recurvature trajectory accurately, whereas GFS suffered from a right-of-track bias. VayuSangam utilized the inter-model disagreement feature to dynamically down-weight divergent tracks, achieving lowest wind vector RMSE.',
     dataSeries: [
       {
         leadTimeHours: 12,
         timeLabel: 'T+12h (Approach)',
         actualVerified: 68.0,
-        hyBlend: 67.2,
+        VayuSangam: 67.2,
         models: {
           'ecmwf-ifs': 66.5,
           'mithuna-fs': 64.0,
@@ -261,7 +261,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 24,
         timeLabel: 'T+24h (Near Landfall)',
         actualVerified: 98.5,
-        hyBlend: 96.0,
+        VayuSangam: 96.0,
         models: {
           'ecmwf-ifs': 94.0,
           'mithuna-fs': 90.0,
@@ -275,7 +275,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 36,
         timeLabel: 'T+36h (Peak Landfall)',
         actualVerified: 112.0,
-        hyBlend: 108.4,
+        VayuSangam: 108.4,
         models: {
           'ecmwf-ifs': 105.0,
           'mithuna-fs': 100.0,
@@ -289,7 +289,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 48,
         timeLabel: 'T+48h (Post Landfall)',
         actualVerified: 54.0,
-        hyBlend: 53.0,
+        VayuSangam: 53.0,
         models: {
           'ecmwf-ifs': 52.0,
           'mithuna-fs': 50.0,
@@ -301,7 +301,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
       }
     ],
     errorSummaries: [
-      { modelId: 'hyblend', modelName: 'HyBlend (Layer 2 Gated)', rmse: 2.8, mae: 2.2, bias: -2.1, rank: 1, isHyBlend: true },
+      { modelId: 'VayuSangam', modelName: 'VayuSangam (Layer 2 Gated)', rmse: 2.8, mae: 2.2, bias: -2.1, rank: 1, isVayuSangam: true },
       { modelId: 'neps-r', modelName: 'NCMRWF NEPS-R (4km)', rmse: 3.4, mae: 2.8, bias: +0.6, rank: 2 },
       { modelId: 'ecmwf-ifs', modelName: 'ECMWF IFS/HRES', rmse: 5.6, mae: 4.8, bias: -4.5, rank: 3 },
       { modelId: 'mithuna-fs', modelName: 'NCMRWF Mithuna-FS', rmse: 8.9, mae: 7.6, bias: -7.4, rank: 4 },
@@ -320,13 +320,13 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
     variableUnit: 'mm (Liquid Equivalent)',
     eventDescription: 'Intense upper-air trough embedded in subtropical westerlies producing heavy snowfall across Pir Panjal and Kashmir valley (85mm liquid equivalent).',
     reproducibleHash: 'SHA256:1a84f39c29801... (IMD AWS Srinagar + Gulmarg Snow-Gauge Obs)',
-    keyInsight: 'Regional NEPS-R correctly captured complex valley channeling and orographic ascent that coarse global models missed. HyBlend allocated 44% weight to NEPS-R and 30% to IFS, reducing lead-time error by 27%.',
+    keyInsight: 'Regional NEPS-R correctly captured complex valley channeling and orographic ascent that coarse global models missed. VayuSangam allocated 44% weight to NEPS-R and 30% to IFS, reducing lead-time error by 27%.',
     dataSeries: [
       {
         leadTimeHours: 24,
         timeLabel: 'Day 1 (19 Feb)',
         actualVerified: 32.0,
-        hyBlend: 31.4,
+        VayuSangam: 31.4,
         models: {
           'neps-r': 33.0,
           'mithuna-fs': 28.0,
@@ -340,7 +340,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 48,
         timeLabel: 'Day 2 (20 Feb - Peak)',
         actualVerified: 85.0,
-        hyBlend: 81.2,
+        VayuSangam: 81.2,
         models: {
           'neps-r': 83.5,
           'mithuna-fs': 72.0,
@@ -354,7 +354,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
         leadTimeHours: 72,
         timeLabel: 'Day 3 (21 Feb)',
         actualVerified: 24.0,
-        hyBlend: 23.5,
+        VayuSangam: 23.5,
         models: {
           'neps-r': 25.0,
           'mithuna-fs': 21.0,
@@ -366,7 +366,7 @@ export const HISTORICAL_DUEL_CASES: HistoricalDuelCase[] = [
       }
     ],
     errorSummaries: [
-      { modelId: 'hyblend', modelName: 'HyBlend (Layer 2 Gated)', rmse: 2.6, mae: 2.1, bias: -1.6, crps: 1.8, rank: 1, isHyBlend: true },
+      { modelId: 'VayuSangam', modelName: 'VayuSangam (Layer 2 Gated)', rmse: 2.6, mae: 2.1, bias: -1.6, crps: 1.8, rank: 1, isVayuSangam: true },
       { modelId: 'neps-r', modelName: 'NCMRWF NEPS-R (4km)', rmse: 3.1, mae: 2.5, bias: +0.8, crps: 2.2, rank: 2 },
       { modelId: 'ecmwf-ifs', modelName: 'ECMWF IFS/HRES', rmse: 6.8, mae: 5.5, bias: -5.2, crps: 4.5, rank: 3 },
       { modelId: 'mithuna-fs', modelName: 'NCMRWF Mithuna-FS', rmse: 9.2, mae: 7.7, bias: -7.3, crps: 6.1, rank: 4 },

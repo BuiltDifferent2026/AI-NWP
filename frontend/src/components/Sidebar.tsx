@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForecast, ActivePage } from '../context/ForecastContext';
-import { 
-  Home, 
-  AlertTriangle, 
-  BarChart3, 
-  BookOpen, 
+import {
+  Home,
+  AlertTriangle,
+  BarChart3,
+  BookOpen,
   ChevronRight,
   ChevronLeft,
   X,
@@ -15,13 +15,13 @@ import {
 } from 'lucide-react';
 
 export const Sidebar: React.FC = () => {
-  const { 
-    activePage, 
-    navigateTo, 
-    isSidebarCollapsed, 
-    toggleSidebar, 
-    isMobileMenuOpen, 
-    closeMobileMenu 
+  const {
+    activePage,
+    navigateTo,
+    isSidebarCollapsed,
+    toggleSidebar,
+    isMobileMenuOpen,
+    closeMobileMenu
   } = useForecast();
 
   // High-impact, purely operational meteorological navigation menu
@@ -36,7 +36,7 @@ export const Sidebar: React.FC = () => {
   ];
 
   return (
-    <aside 
+    <aside
       className={`sidebar-nav ${isSidebarCollapsed ? 'collapsed' : ''} ${isMobileMenuOpen ? 'mobile-open' : ''}`}
       aria-label="Main Navigation"
     >
@@ -47,7 +47,7 @@ export const Sidebar: React.FC = () => {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <Compass size={18} color="#4ADE80" />
             <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#FFFFFF', letterSpacing: '0.04em' }}>
-              HyBlend Portal
+              VayuSangam Portal
             </span>
           </div>
           <button
@@ -80,7 +80,7 @@ export const Sidebar: React.FC = () => {
       {/* Main Menu Links */}
       <div className="sidebar-menu">
         {menuItems.map((item) => {
-          const isActive = 
+          const isActive =
             activePage === item.id ||
             ((activePage === 'dashboard' || activePage === 'model-blending' || activePage === 'explainability' || activePage === 'region-detail') && item.id === 'forecast-explorer') ||
             (activePage === 'extreme-events' && item.id === 'extreme-weather') ||

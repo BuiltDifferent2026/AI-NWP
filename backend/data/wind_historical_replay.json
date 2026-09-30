@@ -1,6 +1,6 @@
 {
   "data_mode": "historical_replay",
-  "title": "HyBlend Wind Historical Replay",
+  "title": "VayuSangam Wind Historical Replay",
   "context": {
     "valid_time": "2021-01-17 00:00:00",
     "init_time": "2021-01-12 00:00:00",
@@ -28,7 +28,7 @@
       "value": 0.46508116382711506,
       "weight": 0.00047692127439475886
     },
-    "hyblend": {
+    "VayuSangam": {
       "value": 4.539221578420023,
       "selected": true
     }

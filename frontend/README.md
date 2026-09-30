@@ -1,12 +1,12 @@
-# HyBlend — Frontend Application
+# VayuSangam — Frontend Application
 
-This directory contains the complete client-side application for **HyBlend** (Regime-Aware Multi-Model Forecast Blending System), built for the **National Centre for Medium Range Weather Forecasting (NCMRWF)** and the **Ministry of Earth Sciences (MoES)**.
+This directory contains the complete client-side application for **VayuSangam** (Regime-Aware Multi-Model Forecast Blending System), built for the **National Centre for Medium Range Weather Forecasting (NCMRWF)** and the **Ministry of Earth Sciences (MoES)**.
 
 ---
 
 ## 🏗️ Architecture Overview
 
-The HyBlend frontend is a high-performance single-page application built with **React 19**, **TypeScript**, and **Vite**, featuring interactive geospatial mapping (Mapbox GL + Leaflet) and live inference integration with the FastAPI LightGBM backend.
+The VayuSangam frontend is a high-performance single-page application built with **React 19**, **TypeScript**, and **Vite**, featuring interactive geospatial mapping (Mapbox GL + Leaflet) and live inference integration with the FastAPI LightGBM backend.
 
 ```
 frontend/

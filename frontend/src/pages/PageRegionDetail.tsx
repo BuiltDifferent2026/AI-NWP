@@ -120,7 +120,7 @@ export const PageRegionDetail: React.FC = () => {
                 );
               })}
 
-              {/* Shaded 95% Confidence Interval band for HyBlend */}
+              {/* Shaded 95% Confidence Interval band for VayuSangam */}
               <polygon
                 points={`
                   70,145 140,148 210,138 280,152 350,142 420,155 490,158
@@ -139,7 +139,7 @@ export const PageRegionDetail: React.FC = () => {
                 strokeDasharray="4 4"
               />
 
-              {/* HyBlend Layer 2 line (solid deep monsoon blue) */}
+              {/* VayuSangam Layer 2 line (solid deep monsoon blue) */}
               <polyline
                 points="70,152 140,154 210,145 280,158 350,149 420,161 490,165"
                 fill="none"
@@ -164,7 +164,7 @@ export const PageRegionDetail: React.FC = () => {
           <div style={{ display: 'flex', gap: '1.25rem', marginTop: '0.75rem', fontSize: '0.78rem', borderTop: '1px solid var(--color-border-subtle)', paddingTop: '0.5rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <span style={{ width: '16px', height: '3px', backgroundColor: '#0B3D62', display: 'inline-block' }}></span>
-              <strong>HyBlend Layer 2 Gate</strong> (with shaded 95% bootstrap CI)
+              <strong>VayuSangam Layer 2 Gate</strong> (with shaded 95% bootstrap CI)
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
               <span style={{ width: '16px', height: '2px', backgroundColor: '#D97706', borderTop: '2px dashed #D97706', display: 'inline-block' }}></span>
@@ -233,7 +233,7 @@ export const PageRegionDetail: React.FC = () => {
             Validate Stored Historical Case Benchmarks
           </div>
           <div style={{ fontSize: '0.78rem', color: 'var(--color-muted)' }}>
-            Compare multi-model forecasts vs. HyBlend vs. IMD AWS ground truth for {selectedSubdivision.name}.
+            Compare multi-model forecasts vs. VayuSangam vs. IMD AWS ground truth for {selectedSubdivision.name}.
           </div>
         </div>
         <button

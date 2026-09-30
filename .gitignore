@@ -1,4 +1,6 @@
-# Logs
+# ────────────────────────────────────────────
+#  Logs
+# ────────────────────────────────────────────
 logs
 *.log
 npm-debug.log*
@@ -7,16 +9,29 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# ────────────────────────────────────────────
+#  Node.js / Frontend
+# ────────────────────────────────────────────
 node_modules
 dist
 dist-ssr
 *.local
+
+# ────────────────────────────────────────────
+#  Environment variables (never commit real .env)
+# ────────────────────────────────────────────
 .env
 .env.local
 .env.*.local
+frontend/.env
+frontend/.env.local
+frontend/.env.*.local
 !.env.example
+!frontend/.env.example
 
-# Editor directories and files
+# ────────────────────────────────────────────
+#  Editor & OS artefacts
+# ────────────────────────────────────────────
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -27,10 +42,19 @@ dist-ssr
 *.sln
 ChatGPT*.png
 
-# Python virtual environment & cache
+# ────────────────────────────────────────────
+#  Python
+# ────────────────────────────────────────────
 venv/
 .venv/
 __pycache__/
 *.py[cod]
 *$py.class
 .pytest_cache/
+
+# ────────────────────────────────────────────
+#  Build / Deploy artefacts
+# ────────────────────────────────────────────
+*.egg-info/
+.eggs/
+build/

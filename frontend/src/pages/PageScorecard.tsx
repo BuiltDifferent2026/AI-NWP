@@ -4,13 +4,13 @@ import { ALL_36_SUBDIVISIONS } from '../data/imdSubdivisions';
 import { FALLBACK_RECORDS } from '../data/scorecardData';
 import { MODEL_MAP } from '../data/models';
 import { WEATHER_REGIMES } from '../data/regimes';
-import { 
-  ShieldCheck, 
-  ArrowUpDown, 
-  Info, 
-  ChevronRight, 
-  Search, 
-  CheckCircle2, 
+import {
+  ShieldCheck,
+  ArrowUpDown,
+  Info,
+  ChevronRight,
+  Search,
+  CheckCircle2,
   AlertTriangle,
   CloudRain,
   Thermometer,
@@ -21,7 +21,7 @@ interface BenchmarkRow {
   methodName: string;
   skillGain: number;
   gainCi: [number, number];
-  isHyBlend: boolean;
+  isVayuSangam: boolean;
   isFallback?: boolean;
 }
 
@@ -67,11 +67,11 @@ const getStratumBenchmarkData = (lt: LeadTimeOption, v: VariableOption): Stratum
           { val: '+40%', x: 760 },
         ],
         rows: [
-          { methodName: 'HyBlend (Layer 2 LightGBM Gate)', skillGain: -1.14, gainCi: [-2.45, 0.18], isHyBlend: true, isFallback: true },
-          { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isHyBlend: false },
-          { methodName: 'Equal-Weight Ensemble Average', skillGain: -4.12, gainCi: [-5.20, -3.04], isHyBlend: false },
-          { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -11.45, gainCi: [-12.80, -10.10], isHyBlend: false },
-          { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -22.80, gainCi: [-24.50, -21.10], isHyBlend: false }
+          { methodName: 'VayuSangam (Layer 2 LightGBM Gate)', skillGain: -1.14, gainCi: [-2.45, 0.18], isVayuSangam: true, isFallback: true },
+          { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isVayuSangam: false },
+          { methodName: 'Equal-Weight Ensemble Average', skillGain: -4.12, gainCi: [-5.20, -3.04], isVayuSangam: false },
+          { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -11.45, gainCi: [-12.80, -10.10], isVayuSangam: false },
+          { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -22.80, gainCi: [-24.50, -21.10], isVayuSangam: false }
         ]
       };
     } else if (lt === 'day-3') {
@@ -94,11 +94,11 @@ const getStratumBenchmarkData = (lt: LeadTimeOption, v: VariableOption): Stratum
           { val: '+40%', x: 760 },
         ],
         rows: [
-          { methodName: 'HyBlend (Layer 2 LightGBM Gate)', skillGain: 4.20, gainCi: [2.76, 5.56], isHyBlend: true },
-          { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isHyBlend: false },
-          { methodName: 'Equal-Weight Ensemble Average', skillGain: -0.76, gainCi: [-1.45, -0.07], isHyBlend: false },
-          { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -15.76, gainCi: [-17.20, -14.32], isHyBlend: false },
-          { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -32.87, gainCi: [-34.50, -31.24], isHyBlend: false }
+          { methodName: 'VayuSangam (Layer 2 LightGBM Gate)', skillGain: 4.20, gainCi: [2.76, 5.56], isVayuSangam: true },
+          { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isVayuSangam: false },
+          { methodName: 'Equal-Weight Ensemble Average', skillGain: -0.76, gainCi: [-1.45, -0.07], isVayuSangam: false },
+          { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -15.76, gainCi: [-17.20, -14.32], isVayuSangam: false },
+          { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -32.87, gainCi: [-34.50, -31.24], isVayuSangam: false }
         ]
       };
     } else if (lt === 'day-5') {
@@ -121,11 +121,11 @@ const getStratumBenchmarkData = (lt: LeadTimeOption, v: VariableOption): Stratum
           { val: '+40%', x: 760 },
         ],
         rows: [
-          { methodName: 'HyBlend (Layer 2 LightGBM Gate)', skillGain: 9.19, gainCi: [7.82, 10.59], isHyBlend: true },
-          { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isHyBlend: false },
-          { methodName: 'Equal-Weight Ensemble Average', skillGain: 1.85, gainCi: [0.95, 2.75], isHyBlend: false },
-          { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -18.24, gainCi: [-19.90, -16.58], isHyBlend: false },
-          { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -38.45, gainCi: [-40.20, -36.70], isHyBlend: false }
+          { methodName: 'VayuSangam (Layer 2 LightGBM Gate)', skillGain: 9.19, gainCi: [7.82, 10.59], isVayuSangam: true },
+          { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isVayuSangam: false },
+          { methodName: 'Equal-Weight Ensemble Average', skillGain: 1.85, gainCi: [0.95, 2.75], isVayuSangam: false },
+          { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -18.24, gainCi: [-19.90, -16.58], isVayuSangam: false },
+          { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -38.45, gainCi: [-40.20, -36.70], isVayuSangam: false }
         ]
       };
     } else {
@@ -149,11 +149,11 @@ const getStratumBenchmarkData = (lt: LeadTimeOption, v: VariableOption): Stratum
           { val: '+40%', x: 760 },
         ],
         rows: [
-          { methodName: 'HyBlend (Layer 2 LightGBM Gate)', skillGain: 13.43, gainCi: [11.89, 14.86], isHyBlend: true },
-          { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isHyBlend: false },
-          { methodName: 'Equal-Weight Ensemble Average', skillGain: 3.42, gainCi: [2.10, 4.74], isHyBlend: false },
-          { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -21.50, gainCi: [-23.40, -19.60], isHyBlend: false },
-          { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -44.12, gainCi: [-46.10, -42.14], isHyBlend: false }
+          { methodName: 'VayuSangam (Layer 2 LightGBM Gate)', skillGain: 13.43, gainCi: [11.89, 14.86], isVayuSangam: true },
+          { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isVayuSangam: false },
+          { methodName: 'Equal-Weight Ensemble Average', skillGain: 3.42, gainCi: [2.10, 4.74], isVayuSangam: false },
+          { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -21.50, gainCi: [-23.40, -19.60], isVayuSangam: false },
+          { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -44.12, gainCi: [-46.10, -42.14], isVayuSangam: false }
         ]
       };
     }
@@ -187,11 +187,11 @@ const getStratumBenchmarkData = (lt: LeadTimeOption, v: VariableOption): Stratum
         { val: '+60%', x: 776 },
       ],
       rows: [
-        { methodName: 'HyBlend (Layer 2 LightGBM Gate)', skillGain: cur.gain, gainCi: cur.ci, isHyBlend: true },
-        { methodName: 'Equal-Weight Ensemble Average', skillGain: 8.50, gainCi: [7.75, 9.25], isHyBlend: false },
-        { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isHyBlend: false },
-        { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -3.46, gainCi: [-4.30, -2.62], isHyBlend: false },
-        { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -10.28, gainCi: [-11.20, -9.36], isHyBlend: false }
+        { methodName: 'VayuSangam (Layer 2 LightGBM Gate)', skillGain: cur.gain, gainCi: cur.ci, isVayuSangam: true },
+        { methodName: 'Equal-Weight Ensemble Average', skillGain: 8.50, gainCi: [7.75, 9.25], isVayuSangam: false },
+        { methodName: 'Best Single Model (Pangu-Weather)', skillGain: 0.0, gainCi: [0.0, 0.0], isVayuSangam: false },
+        { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: -3.46, gainCi: [-4.30, -2.62], isVayuSangam: false },
+        { methodName: 'IFS HRES (Physical NWP Core)', skillGain: -10.28, gainCi: [-11.20, -9.36], isVayuSangam: false }
       ]
     };
   }
@@ -223,11 +223,11 @@ const getStratumBenchmarkData = (lt: LeadTimeOption, v: VariableOption): Stratum
       { val: '+40%', x: 760 },
     ],
     rows: [
-      { methodName: 'HyBlend Q-Q LightGBM Calibrator', skillGain: curRain.gain, gainCi: curRain.ci, isHyBlend: true },
-      { methodName: 'Equal-Weight Ensemble Average', skillGain: 8.20, gainCi: [7.10, 9.30], isHyBlend: false },
-      { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: 3.40, gainCi: [2.30, 4.50], isHyBlend: false },
-      { methodName: 'Raw IFS HRES (Uncalibrated)', skillGain: 0.0, gainCi: [0.0, 0.0], isHyBlend: false },
-      { methodName: 'Climatological Persistence Prior', skillGain: -24.80, gainCi: [-26.50, -23.10], isHyBlend: false }
+      { methodName: 'VayuSangam Q-Q LightGBM Calibrator', skillGain: curRain.gain, gainCi: curRain.ci, isVayuSangam: true },
+      { methodName: 'Equal-Weight Ensemble Average', skillGain: 8.20, gainCi: [7.10, 9.30], isVayuSangam: false },
+      { methodName: 'IFS ENS Mean (Ensemble NWP)', skillGain: 3.40, gainCi: [2.30, 4.50], isVayuSangam: false },
+      { methodName: 'Raw IFS HRES (Uncalibrated)', skillGain: 0.0, gainCi: [0.0, 0.0], isVayuSangam: false },
+      { methodName: 'Climatological Persistence Prior', skillGain: -24.80, gainCi: [-26.50, -23.10], isVayuSangam: false }
     ]
   };
 };
@@ -242,7 +242,7 @@ export const PageScorecard: React.FC = () => {
   const benchmarkData = getStratumBenchmarkData(leadTime, variable);
 
   // Filter and sort subdivisions
-  const filteredSubdivisions = ALL_36_SUBDIVISIONS.filter(sub => 
+  const filteredSubdivisions = ALL_36_SUBDIVISIONS.filter(sub =>
     sub.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     sub.code.toLowerCase().includes(searchTerm.toLowerCase())
   ).sort((a, b) => {
@@ -342,14 +342,14 @@ export const PageScorecard: React.FC = () => {
               <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--color-ink)' }}>
                 National Skill Score Gain vs. Honest Alternatives
               </h2>
-              <span style={{ 
-                fontSize: '0.7rem', 
-                background: benchmarkData.badgeBg, 
-                color: benchmarkData.badgeColor, 
+              <span style={{
+                fontSize: '0.7rem',
+                background: benchmarkData.badgeBg,
+                color: benchmarkData.badgeColor,
                 border: `1px solid ${benchmarkData.badgeBorder}`,
-                padding: '2px 8px', 
-                borderRadius: '12px', 
-                fontWeight: 700 
+                padding: '2px 8px',
+                borderRadius: '12px',
+                fontWeight: 700
               }}>
                 {benchmarkData.badgeText}
               </span>
@@ -371,20 +371,20 @@ export const PageScorecard: React.FC = () => {
           <svg viewBox="0 0 860 230" style={{ width: '100%', height: 'auto', minWidth: '700px' }}>
             {/* Zero Baseline Axis & Vertical Gridlines */}
             <line x1={benchmarkData.zeroX} y1="20" x2={benchmarkData.zeroX} y2="185" stroke="#64748B" strokeWidth="1.5" />
-            
+
             {benchmarkData.ticks.filter(t => t.x !== benchmarkData.zeroX).map((tick, i) => (
               <line key={i} x1={tick.x} y1="20" x2={tick.x} y2="185" stroke="#E2E8F0" strokeDasharray="3 3" />
             ))}
 
             {/* X-axis labels */}
             {benchmarkData.ticks.map((tick, i) => (
-              <text 
-                key={i} 
-                x={tick.x} 
-                y="202" 
-                textAnchor="middle" 
-                fontSize={tick.x === benchmarkData.zeroX ? '11' : '10.5'} 
-                fill={tick.x === benchmarkData.zeroX ? '#0B3D62' : '#64748B'} 
+              <text
+                key={i}
+                x={tick.x}
+                y="202"
+                textAnchor="middle"
+                fontSize={tick.x === benchmarkData.zeroX ? '11' : '10.5'}
+                fill={tick.x === benchmarkData.zeroX ? '#0B3D62' : '#64748B'}
                 fontWeight={tick.x === benchmarkData.zeroX ? '700' : '500'}
               >
                 {tick.val}
@@ -401,13 +401,13 @@ export const PageScorecard: React.FC = () => {
 
               const ciLeft = zeroX + (row.gainCi[0] * scale);
               const ciRight = zeroX + (row.gainCi[1] * scale);
-              const isHyBlend = row.isHyBlend;
+              const isVayuSangam = row.isVayuSangam;
               const isFallback = row.isFallback;
 
               return (
                 <g key={idx}>
-                  {/* Row background highlight for HyBlend */}
-                  {isHyBlend && (
+                  {/* Row background highlight for VayuSangam */}
+                  {isVayuSangam && (
                     <rect
                       x="10"
                       y={y - 5}
@@ -425,8 +425,8 @@ export const PageScorecard: React.FC = () => {
                     y={y + 12}
                     textAnchor="end"
                     fontSize="11"
-                    fontWeight={isHyBlend ? '700' : '500'}
-                    fill={isHyBlend ? (isFallback ? '#B91C1C' : '#1E40AF') : '#1E293B'}
+                    fontWeight={isVayuSangam ? '700' : '500'}
+                    fill={isVayuSangam ? (isFallback ? '#B91C1C' : '#1E40AF') : '#1E293B'}
                   >
                     {row.methodName}
                   </text>
@@ -438,9 +438,9 @@ export const PageScorecard: React.FC = () => {
                       y={y}
                       width={barWidth}
                       height="16"
-                      fill={isHyBlend ? (isFallback ? '#DC2626' : '#2563EB') : row.skillGain > 0 ? '#059669' : '#94A3B8'}
+                      fill={isVayuSangam ? (isFallback ? '#DC2626' : '#2563EB') : row.skillGain > 0 ? '#059669' : '#94A3B8'}
                       rx="3"
-                      opacity={isHyBlend ? 1.0 : 0.85}
+                      opacity={isVayuSangam ? 1.0 : 0.85}
                     />
                   )}
 
@@ -452,7 +452,7 @@ export const PageScorecard: React.FC = () => {
                         y1={y + 8}
                         x2={ciRight}
                         y2={y + 8}
-                        stroke={isHyBlend ? '#D97706' : '#475569'}
+                        stroke={isVayuSangam ? '#D97706' : '#475569'}
                         strokeWidth="2"
                       />
                       {/* Left Cap */}
@@ -461,7 +461,7 @@ export const PageScorecard: React.FC = () => {
                         y1={y + 3}
                         x2={ciLeft}
                         y2={y + 13}
-                        stroke={isHyBlend ? '#D97706' : '#475569'}
+                        stroke={isVayuSangam ? '#D97706' : '#475569'}
                         strokeWidth="1.5"
                       />
                       {/* Right Cap */}
@@ -470,7 +470,7 @@ export const PageScorecard: React.FC = () => {
                         y1={y + 3}
                         x2={ciRight}
                         y2={y + 13}
-                        stroke={isHyBlend ? '#D97706' : '#475569'}
+                        stroke={isVayuSangam ? '#D97706' : '#475569'}
                         strokeWidth="1.5"
                       />
                     </g>
@@ -481,8 +481,8 @@ export const PageScorecard: React.FC = () => {
                     x={Math.max(barStart + barWidth + 12, ciRight + 8)}
                     y={y + 12}
                     fontSize="10.5"
-                    fontWeight={isHyBlend ? '700' : '600'}
-                    fill={isHyBlend ? (isFallback ? '#B91C1C' : '#1E40AF') : '#334155'}
+                    fontWeight={isVayuSangam ? '700' : '600'}
+                    fill={isVayuSangam ? (isFallback ? '#B91C1C' : '#1E40AF') : '#334155'}
                   >
                     {row.skillGain >= 0 ? `+${row.skillGain.toFixed(2)}%` : `${row.skillGain.toFixed(2)}%`}
                     {row.gainCi[0] !== row.gainCi[1] && (
@@ -518,7 +518,7 @@ export const PageScorecard: React.FC = () => {
           </h2>
         </div>
         <p style={{ fontSize: '0.825rem', color: 'var(--color-muted)', marginBottom: '1rem', lineHeight: '1.5' }}>
-          HyBlend enforces strict fallback safety gates: when the blending ensemble fails to beat the best individual upstream model within a 95% bootstrap confidence band, the system automatically bypasses the blend and delegates directly to the leading model.
+          VayuSangam enforces strict fallback safety gates: when the blending ensemble fails to beat the best individual upstream model within a 95% bootstrap confidence band, the system automatically bypasses the blend and delegates directly to the leading model.
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>

@@ -3,7 +3,7 @@ import { ALL_36_SUBDIVISIONS, IMDSubdivision, SUBDIVISIONS_BY_ID } from '../data
 
 export type LeadTimeOption = 'day-1' | 'day-3' | 'day-5' | 'day-7';
 export type VariableOption = 'rainfall' | 'temperature' | 'wind' | 'extreme';
-export type ActivePage = 
+export type ActivePage =
   | 'home'
   | 'forecast-explorer'
   | 'model-blending'
@@ -65,27 +65,27 @@ const pageToPathMap: Record<ActivePage, string> = {
 };
 
 const pageTitleMap: Record<ActivePage, string> = {
-  'home': 'HyBlend — National Regime-Aware Multi-Model Blending System | MoES SIH26081',
-  'forecast-explorer': 'Forecast & Blending Studio | HyBlend',
-  'model-blending': 'Forecast & Blending Studio | HyBlend',
-  'dashboard': 'Forecast & Blending Studio | HyBlend',
-  'scorecard': 'Skill Scorecard (95% CI) | HyBlend',
-  'model-duel': 'Model Duel Benchmark Cases | HyBlend',
-  'verification-lab': 'Verification Lab & Metrics | HyBlend',
-  'extreme-weather': 'Extreme Weather Guidance | HyBlend',
-  'extreme-events': 'Extreme Weather Guidance | HyBlend',
-  'system-ops': 'System Operations & API Telemetry | HyBlend',
-  'explainability': 'Subdivision Explainability | HyBlend',
-  'region-detail': 'Subdivision Explainability | HyBlend',
-  'about': 'Methodology & Scientific Framework | HyBlend',
-  'methodology': 'Methodology & Scientific Framework | HyBlend',
-  'research': 'Methodology & Scientific Framework | HyBlend',
-  'data-products': 'Methodology & Scientific Framework | HyBlend',
+  'home': 'VayuSangam — National Regime-Aware Multi-Model Blending System | MoES SIH26081',
+  'forecast-explorer': 'Forecast & Blending Studio | VayuSangam',
+  'model-blending': 'Forecast & Blending Studio | VayuSangam',
+  'dashboard': 'Forecast & Blending Studio | VayuSangam',
+  'scorecard': 'Skill Scorecard (95% CI) | VayuSangam',
+  'model-duel': 'Model Duel Benchmark Cases | VayuSangam',
+  'verification-lab': 'Verification Lab & Metrics | VayuSangam',
+  'extreme-weather': 'Extreme Weather Guidance | VayuSangam',
+  'extreme-events': 'Extreme Weather Guidance | VayuSangam',
+  'system-ops': 'System Operations & API Telemetry | VayuSangam',
+  'explainability': 'Subdivision Explainability | VayuSangam',
+  'region-detail': 'Subdivision Explainability | VayuSangam',
+  'about': 'Methodology & Scientific Framework | VayuSangam',
+  'methodology': 'Methodology & Scientific Framework | VayuSangam',
+  'research': 'Methodology & Scientific Framework | VayuSangam',
+  'data-products': 'Methodology & Scientific Framework | VayuSangam',
 };
 
 const parseLocation = (): { page: ActivePage; subdivId?: string; caseId?: string } => {
   if (typeof window === 'undefined') return { page: 'home' };
-  
+
   let path = window.location.pathname.toLowerCase().replace(/\/$/, '') || '/';
   if (window.location.hash) {
     const hashClean = window.location.hash.replace(/^#\/?/, '').toLowerCase();
@@ -188,7 +188,7 @@ export const ForecastProvider: React.FC<{ children: React.ReactNode }> = ({ chil
         window.history.pushState({ page, subdivId, caseId }, '', newUrl);
       }
 
-      document.title = pageTitleMap[page] || 'HyBlend — Multi-Model Forecast Blending System';
+      document.title = pageTitleMap[page] || 'VayuSangam — Multi-Model Forecast Blending System';
     }
   }, []);
 
@@ -199,13 +199,13 @@ export const ForecastProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       setActivePage(page);
       if (subdivId) setSelectedSubdivisionId(subdivId);
       if (caseId) setSelectedDuelCaseId(caseId);
-      document.title = pageTitleMap[page] || 'HyBlend — Multi-Model Forecast Blending System';
+      document.title = pageTitleMap[page] || 'VayuSangam — Multi-Model Forecast Blending System';
     };
 
     window.addEventListener('popstate', handlePopState);
-    
+
     // Set initial title on load
-    document.title = pageTitleMap[initialLoc.page] || 'HyBlend — Multi-Model Forecast Blending System';
+    document.title = pageTitleMap[initialLoc.page] || 'VayuSangam — Multi-Model Forecast Blending System';
 
     return () => {
       window.removeEventListener('popstate', handlePopState);
