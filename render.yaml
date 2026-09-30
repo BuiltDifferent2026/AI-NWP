@@ -3,7 +3,7 @@ services:
     name: VayuSangam-api
     runtime: python
     region: oregon
-    plan: starter                     # upgrade to standard for always-on (no cold starts)
+    plan: free                     # upgrade to standard for always-on (no cold starts)
 
     # Root directory is backend/ — Render will only see files inside this folder.
     # The data/ folder is colocated at backend/data/ so it is always accessible.
