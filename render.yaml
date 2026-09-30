@@ -3,24 +3,26 @@ services:
     name: VayuSangam-api
     runtime: python
     region: oregon
-    plan: free                     # upgrade to standard for always-on (no cold starts)
+    plan: free
 
-    # Root directory is backend/ — Render will only see files inside this folder.
-    # The data/ folder is colocated at backend/data/ so it is always accessible.
-    rootDir: backend
+    # Run from repository root so `backend` is treated as a Python package.
+    rootDir: .
 
-    buildCommand: pip install -r requirements.txt
-    # app.py uses relative imports from within the backend package,
-    # so we run uvicorn pointing at the app object via the package's app module.
-    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    # Install backend dependencies.
+    buildCommand: pip install -r backend/requirements.txt
+
+    # Start FastAPI through the backend package.
+    startCommand: uvicorn backend.app:app --host 0.0.0.0 --port $PORT
+
+    # Render uses this endpoint to verify the service is healthy.
     healthCheckPath: /api/health
 
     envVars:
       - key: PYTHON_VERSION
         value: "3.11.0"
 
-      # Comma-separated list of allowed frontend origins (your Vercel URL).
-      # Set this in the Render dashboard after your Vercel URL is known.
-      # Example: https://VayuSangam.vercel.app
+      # Set this manually in the Render dashboard.
+      # Example:
+      # https://ai-nwp.vercel.app
       - key: ALLOWED_ORIGINS
-        sync: false                   # set manually in Render dashboard — keep out of git
+        sync: false
